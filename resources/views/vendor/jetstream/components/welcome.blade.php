@@ -4,14 +4,25 @@
     </div>
 
     <div class="mt-8 text-2xl">
-        Welcome to your Jetstream application!
+        Bienvenidos  al Sistema de Administración del sitio web de la Coopereativa
     </div>
 
     <div class="mt-6 text-gray-500">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
+        <div class="container">
+            <div class="grid grid-cols-1 grid-rows-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-blue-200">A</div>
+                <div class="bg-blue-300">B</div>
+                <div class="bg-blue-400 col-span-2 row-span-2">C</div>
+                <div class="bg-blue-500">D</div>
+                <div class="bg-blue-600">E</div>
+                <div class="bg-blue-700">F</div>
+            </div>
+            Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
+            to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
+            you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
+            ecosystem to be a breath of fresh air. We hope you love it.
+        </div>
+        
     </div>
 </div>
 
