@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-6 px-4">
+                <h1>welcome</h1>
+            </div>
+        </div>
+    </div>
+    
+</x-app-layout>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -129,4 +139,4 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}
