@@ -6,9 +6,9 @@
             'active' => request()->routeIs('dashboard')
         ],
         [
-            'name'   => 'Prueba',
-            'route'  => '#',
-            'active' => false
+            'name'   => 'Usuarios',
+            'route'  => route('users.index'),
+            'active' => request()->routeIs('users')
         ],
     ];
 @endphp
