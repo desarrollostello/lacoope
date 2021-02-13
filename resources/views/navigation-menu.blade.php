@@ -7,7 +7,7 @@
         ],
         [
             'name'   => 'Usuarios',
-            'route'  => route('users.index'),
+            'route'  => route('users'),
             'active' => request()->routeIs('users')
         ],
     ];
