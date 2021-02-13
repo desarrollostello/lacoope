@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\UsersTable;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::resource('users', UserController::class)->names('users');
+Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
