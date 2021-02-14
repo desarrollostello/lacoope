@@ -15,6 +15,11 @@
             'route'  => route('categories'),
             'active' => request()->routeIs('categories')
         ],
+        [
+            'name'   => 'Tags',
+            'route'  => route('tags'),
+            'active' => request()->routeIs('tags')
+        ],
     ];
 @endphp
 
