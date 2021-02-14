@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\UsersTable;
+use App\Http\Livewire\CategoriesTable;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
+Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

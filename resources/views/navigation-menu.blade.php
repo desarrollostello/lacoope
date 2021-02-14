@@ -10,6 +10,11 @@
             'route'  => route('users'),
             'active' => request()->routeIs('users')
         ],
+        [
+            'name'   => 'Categorías',
+            'route'  => route('categories'),
+            'active' => request()->routeIs('categories')
+        ],
     ];
 @endphp
 
