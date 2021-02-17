@@ -17,19 +17,19 @@
         <tbody class="bg-white divide-y divide-gray-200">
             @foreach ($categories as $cat)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $cat->id }}
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $cat->name }}
                         </div>
                     </td>
                 
                     
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td class="px-6 py-2 whitespace-nowrap text-right text-sm font-medium">
                         <button wire:click="edit({{ $cat->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
                         <button wire:click="destroy({{ $cat->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
                     </td>

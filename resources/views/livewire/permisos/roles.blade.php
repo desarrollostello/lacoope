@@ -9,14 +9,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" style="cursor: pointer" onclick="clearRoleSelected()">
-                        Borrar
+                        <i class="las la-lg la-eraser"></i>
                     </span>
                 </div>
                 <input type="text" id="roleName" class="form-control" autocomplete="off">
                 <input type="hidden" id="roleId">
                 <div class="input-group-prepend">
                     <button style="margin-left: 7px" class="btn btn-primary" wire:click="$emit('CrearRole', $('#roleName').val(), $('#roleId').val() )" type="button">
-                        Guardar
+                        <i class="las la-lg la-save"></i>
                     </button>
                     
                 </div>
@@ -39,13 +39,13 @@
                                 <td class="text-center">{{ \App\Models\User::role($r->name)->count() }}</td>
                                 <td class="text-center">
                                     <span style="cursor: pointer" onclick="showRole('{{ $r }}')">
-                                        Editar
+                                        <i class="lar la-2x la-edit"></i>
                                     </span>
 
                                     @if (\App\Models\User::role($r->name)->count() <= 0)
                                         <a href="javascript:void(0)"
                                         onclick="Confirm('{{ $r->id }}', 'destroyRole')"
-                                        title="Eliminar rol">Borrar </a>
+                                        title="Eliminar rol"><i class="lar la-2x la-eraser"></i> </a>
                                     @endif
                                 </td>
                                 <td class="text-center">

@@ -25,7 +25,7 @@
         <tbody class="bg-white divide-y divide-gray-200">
             @foreach ($users as $user)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-2 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10">
                                 <img class="h-10 w-10 rounded-full" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
@@ -41,13 +41,13 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $user->email }}
                         </div>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $user->dni }}
                         </div>
@@ -55,7 +55,7 @@
 
                     
                     
-                    <td class="text-center  px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="text-center  px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         @if(!empty($user->getRoleNames()))
                             @foreach($user->getRoleNames() as $v)
                                 <label class="text-center px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $v }}</label>

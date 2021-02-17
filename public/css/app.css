@@ -32725,8 +32725,9 @@ select {
   font-weight: 700;
   font-size: 0.75rem;
   line-height: 1rem;
+  color: rgba(107, 114, 128, var(--tw-text-opacity)); 
   --tw-text-opacity: 1;
-  color: rgba(55, 65, 81, var(--tw-text-opacity));
+  
   text-transform: uppercase;
 }
 
