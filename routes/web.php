@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\UsersTable;
 use App\Http\Livewire\TagsTable;
 use App\Http\Livewire\CategoriesTable;
-
+use App\Http\Livewire\Permisos;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)->name('tags');
+Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('roles');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

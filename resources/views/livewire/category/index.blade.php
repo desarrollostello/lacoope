@@ -1,6 +1,6 @@
 <div>
     <div class="py-12">
-        <div class="max-w-7x1 mx-auto sm_px-6 lg:px-8">
+        <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
 
                 <div class="grid grid-cols-12 gap-4">
