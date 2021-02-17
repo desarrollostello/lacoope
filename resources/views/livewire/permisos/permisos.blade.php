@@ -1,5 +1,5 @@
 <div class="tab-pane fade {{ $tab == 'permisos' ? 'show active' : '' }}" id="permisos_content" role="tabpanel">
-    PERMISOS
+    
     <div class="row mt-5">
         <div class="col-sm-12 col-md-7">
             <h6 class="text-center">
@@ -8,14 +8,14 @@
 
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="las la-remove la-lg"></i>
+                    <span class="input-group-text" style="cursor: pointer" onclick="clearPermissionSelected()">
+                        Borrar
                     </span>
                 </div>
-                <input type="text" id="permisoName" class="form-control" autocomplete="off">
-                <input type="hidden" id="permisoId">
+                <input type="text" id="permissionName" class="form-control" autocomplete="off">
+                <input type="hidden" id="permissionId">
                 <div class="input-group-prepend">
-                    <button class="btn btn-primary" wire:click="$emit('CrearPermiso', $('#permisoName').val(), $('#permisoId').val() )" type="button">
+                    <button style="margin-left: 7px" class="btn btn-primary" wire:click="$emit('CrearPermiso', $('#permissionName').val(), $('#permissionId').val() )" type="button">
                         Guardar
                     </button>
                 </div>
@@ -82,7 +82,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="button" onclick="AsignarPermisos()" class="btn btn-primay mt-4">Asignar Permisos</button>
+            <button type="button" onclick="AsignarPermisos()" class="btn btn-primary mt-3">Asignar Permisos</button>
         </div>
     </div>
 </div>
