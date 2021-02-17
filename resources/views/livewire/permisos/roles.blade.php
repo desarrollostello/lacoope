@@ -9,14 +9,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
-                        <i class="la la-remove la-lg"></i>
+                        <i class="las la-eraser"></i>borrar
                     </span>
                 </div>
                 <input type="text" id="roleName" class="form-control" autocomplete="off">
                 <input type="hidden" id="roleId">
                 <div class="input-group-prepend">
-                    <span class="input group-text" wire:click="$emit('crearRole', $('#roleName').val(), $('#roleId').val() )">
-                        <i class="la la-save la-lg"></i>
+                    <span class="input group-text" style="cursor:pointer" wire:click="$emit('crearRole', $('#roleName').val(), $('#roleId').val() )">
+                        guardar
                     </span>
                 </div>
             </div>

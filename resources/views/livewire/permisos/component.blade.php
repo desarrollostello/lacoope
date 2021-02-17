@@ -1,96 +1,71 @@
-<div class="layout-px-spacing">
-    <div class="row">
-        <div class="col-lg-12 col-md-12"> {{-- poner una columna de 12 pero con tailwindcss --}}
-            {{-- <div class="widget-content-area br-4"> 
-                <div class="widget-one">--}}
-                    {{ $tab }}
-                    <ul class="nav nav-pills mt-3 mb-3" id="pills-tab" role="tablist">
-                    
-                        <li class="nav-item">
-                            <a 
-                                wire:click="$set('tab', 'roles')"
-                                class="nav-link {{ $tab == 'roles' ? 'active' : '' }}" 
-                                id="roles_content-tab" 
-                                data-toggle="pill" 
-                                href="#roles_content" 
-                                role="tab" 
-                                aria-controls="roles_content" 
-                                aria-selected="true">
-                                    Roles
-                            </a>
+<div>
+    <div class="py-12">
+        <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12"> {{-- poner una columna de 12 pero con tailwindcss --}}
+                        {{-- <div class="widget-content-area br-4"> 
+                            <div class="widget-one">--}}
+                                {{ $tab }}
+                                <ul class="nav nav-pills mt-3 mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a 
+                                            wire:click="$set('tab', 'roles')"
+                                            class="nav-link {{ $tab == 'roles' ? 'active' : '' }}" 
+                                            id="roles_content-tab" 
+                                            data-toggle="pill" 
+                                            href="#roles_content" 
+                                            role="tab" 
+                                            aria-controls="roles_content" 
+                                            aria-selected="true">
+                                                Roles
+                                        </a>
+                                    </li>
 
-                                {{-- 
-                            <a href="#roles_content" 
-                                class="nav-link {{ $tab == 'roles' ? 'active' : '' }}" wire:click="$set('tab', 'roles')"
-                                data-toggle="pill" role="tab" id="roles_content-tab" aria-controls="roles_content">
-                                    <i class="la la-user la-2x">ROLES</i>
-                                </a>
-                                --}}
-                        </li>
+                                    <li class="nav-item">
+                                        <a 
+                                            wire:click="$set('tab', 'permisos')"
+                                            class="nav-link {{ $tab == 'permisos' ? 'active' : '' }}" 
+                                            id="permisos_content-tab" 
+                                            data-toggle="pill" 
+                                            href="#permisos_content" 
+                                            role="tab" 
+                                            aria-controls="permisos_content" 
+                                            aria-selected="true">
+                                                Permisos
+                                        </a>
 
-                        <li class="nav-item">
+                                    </li>
+                                
+                                </ul>
+                            
+
+                                <div class="tab-content">
+                                    @if($tab == 'roles')
+                                        @include('livewire.permisos.roles')
+                                    @elseif($tab == 'permisos')
+                                        @include('livewire.permisos.permisos')
+                                    @endif
+                                </div>
+                        {{--  </div>
+                        </div>--}}
 
 
-                            <a 
-                                wire:click="$set('tab', 'permisos')"
-                                class="nav-link {{ $tab == 'permisos' ? 'active' : '' }}" 
-                                id="permisos_content-tab" 
-                                data-toggle="pill" 
-                                href="#permisos_content" 
-                                role="tab" 
-                                aria-controls="permisos_content" 
-                                aria-selected="true">
-                                    Permisos
-                            </a>
-
-
-                                {{-- 
-                            <a href="#permisos_content" 
-                                class="nav-link {{ $tab = 'permisos' ? 'active' : '' }}" wire:click="$set('tab', 'permisos')"
-                                data-toggle="pill" role="tab" id="permisos_content-tab" aria-controls="permisos_content">
-                                    <i class="la la-user la-2x">PERMISOS</i>
-                            </a>
-                            --}}
-                        </li>
-                       
-                    </ul>
-                   
-
-                    <div class="tab-content">
-                        @if($tab == 'roles')
-                            @include('livewire.permisos.roles')
-                        @elseif($tab == 'permisos')
-                            @include('livewire.permisos.permisos')
-                        @endif
                     </div>
-               {{--  </div>
-            </div>--}}
-
-
-
-            {{-- 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-                </li>
-              </ul>
-              <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Home</div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Profile</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Contact</div>
-              </div>
-              --}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+    window.livewire.on('alert', param =>{
+        toastr.[param['type']] (param['message'], param['type']);
+    });
+    </script>
+    
+<script>
+
     function showRole(role)
     {
         var data = JSON.parte(role)
@@ -107,7 +82,8 @@
 
     function showPermission(permission)
     {
-        var data = JSON.parte(permission)
+        
+        var data = JSON.parse(permission)
         $('#permisoName').val(data['name'])
         $('#permisoId').val(data['id'])
     }
@@ -121,7 +97,31 @@
 
     function Confirm(id, eventName)
     {
-        swal({
+        
+        Swal.fire({
+            title: 'Confirmar?',
+            text: "Deseas Eliminar el Registro?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.livewire.emit(eventName, id)
+                $('#roleName').val('')
+                $('#roleId').val(0)
+                $('#permissionName').val('')
+                $('#permissionId').val(0)
+              
+            }
+        })
+        
+
+
+        /*
+        Swal.fire({
             title: 'CONFIRMAR',
             text: 'Deseas Eliminar el Registro?',
             type: 'warning',
@@ -131,6 +131,18 @@
             confirmButtonText: 'Aceptar',
             cancelButtonText: 'Cancelar',
             closeOnConfirm: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.livewire.emit(eventName, id)
+                $('#roleName').val('')
+                $('#roleId').val(0)
+                $('#permissionName').val('')
+                $('#permissionId').val(0)
+                //Swal.close()
+            }
+        */
+        
+        /*
         },
         function(){
             window.livewire.emit(eventName, id)
@@ -139,8 +151,8 @@
             $('#roleId').val(0)
             $('#permissionName').val('')
             $('#permissionId').val(0)
-            swal.close()
-        })
+            Swal.close()
+        })*/
     }
 
     function AsignarRoles()

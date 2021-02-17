@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)->name('tags');
-Route::middleware(['auth:sanctum', 'verified'])->get('/roles', Permisos::class)->name('roles');
+Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('roles');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -9,15 +9,15 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
-                        <i class="la la-remove la-lg"></i>
+                        <i class="las la-remove la-lg"></i>
                     </span>
                 </div>
                 <input type="text" id="permisoName" class="form-control" autocomplete="off">
                 <input type="hidden" id="permisoId">
                 <div class="input-group-prepend">
-                    <span class="input group-text" wire:click="$emit('crearPermiso', $('#permisoName').val(), $('#permisoId').val() )">
-                        <i class="la la-save la-lg"></i>
-                    </span>
+                    <button class="btn btn-primary" wire:click="$emit('CrearPermiso', $('#permisoName').val(), $('#permisoId').val() )" type="button">
+                        Guardar
+                    </button>
                 </div>
             </div>
         
@@ -45,13 +45,13 @@
                                 <td class="text-center">{{ \App\Models\User::permission($p->name)->count() }}</td>
                                 <td class="text-center">
                                     <span style="cursor: pointer" onclick="showPermission('{{ $p }}')">
-                                        <i class="la la-edit la-2x text-center"></i>
+                                        Editar
                                     </span>
 
                                     @if (\App\Models\User::permission($p->name)->count() <= 0)
                                         <a href="javascript:void(0)"
                                         onclick="Confirm('{{ $p->id }}', 'destroyPermiso')"
-                                        title="Eliminar permiso"><i class="la la-transh la-2x text-center"></i>
+                                        title="Eliminar permiso">borrar
                                     @endif
                                 </td>
                                 <td class="text-center">
