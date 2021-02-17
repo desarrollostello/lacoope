@@ -18,7 +18,9 @@
                                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                         
                                         <div class="bg-white px-4 flex py-3 items-center justify-left border-t border-gray-200 sm:px-6">
-                                            <button wire:click="clear" class="self-center border px-3 py-2 float-left">X</button>
+                                            <button wire:click="clear" class="rounded-md self-center border px-3 py-2 float-left">
+                                                <i class="las la-lg la-eraser"></i>
+                                            </button>
                                             <input 
                                                 wire:model="search"
                                                 type="text" 

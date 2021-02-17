@@ -9,14 +9,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" style="cursor: pointer" onclick="clearPermissionSelected()">
-                        Borrar
+                        <i class="las la-lg la-eraser"></i>
                     </span>
                 </div>
                 <input type="text" id="permissionName" class="form-control" autocomplete="off">
                 <input type="hidden" id="permissionId">
                 <div class="input-group-prepend">
                     <button style="margin-left: 7px" class="btn btn-primary" wire:click="$emit('CrearPermiso', $('#permissionName').val(), $('#permissionId').val() )" type="button">
-                        Guardar
+                        <i class="las la-lg la-save"></i>
                     </button>
                 </div>
             </div>
@@ -45,13 +45,13 @@
                                 <td class="text-center">{{ \App\Models\User::permission($p->name)->count() }}</td>
                                 <td class="text-center">
                                     <span style="cursor: pointer" onclick="showPermission('{{ $p }}')">
-                                        Editar
+                                        <i class="lar la-2x la-edit"></i>
                                     </span>
 
                                     @if (\App\Models\User::permission($p->name)->count() <= 0)
                                         <a href="javascript:void(0)"
                                         onclick="Confirm('{{ $p->id }}', 'destroyPermiso')"
-                                        title="Eliminar permiso">borrar
+                                        title="Eliminar permiso"><i class="las la-2x la-eraser"></i></a>
                                     @endif
                                 </td>
                                 <td class="text-center">
