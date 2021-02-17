@@ -6,7 +6,7 @@
                     <div class="col-lg-12 col-md-12"> {{-- poner una columna de 12 pero con tailwindcss --}}
                         {{-- <div class="widget-content-area br-4"> 
                             <div class="widget-one">--}}
-                                {{ $tab }}
+                                
                                 <ul class="nav nav-pills mt-3 mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a 
@@ -66,9 +66,10 @@
     
 <script>
 
+
     function showRole(role)
     {
-        var data = JSON.parte(role)
+        var data = JSON.parse(role)
         $('#roleName').val(data['name'])
         $('#roleId').val(data['id'])
     }
@@ -82,10 +83,10 @@
 
     function showPermission(permission)
     {
-        
         var data = JSON.parse(permission)
-        $('#permisoName').val(data['name'])
-        $('#permisoId').val(data['id'])
+        $('#permissionName').val(data['name'])
+        
+        $('#permissionId').val(data['id'])
     }
 
     function clearPermissionSelected()
@@ -114,45 +115,10 @@
                 $('#roleId').val(0)
                 $('#permissionName').val('')
                 $('#permissionId').val(0)
-              
             }
         })
         
 
-
-        /*
-        Swal.fire({
-            title: 'CONFIRMAR',
-            text: 'Deseas Eliminar el Registro?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3065d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Aceptar',
-            cancelButtonText: 'Cancelar',
-            closeOnConfirm: false
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.livewire.emit(eventName, id)
-                $('#roleName').val('')
-                $('#roleId').val(0)
-                $('#permissionName').val('')
-                $('#permissionId').val(0)
-                //Swal.close()
-            }
-        */
-        
-        /*
-        },
-        function(){
-            window.livewire.emit(eventName, id)
-            toastr.success('info', 'Registro eliminado con éxito')
-            $('#roleName').val('')
-            $('#roleId').val(0)
-            $('#permissionName').val('')
-            $('#permissionId').val(0)
-            Swal.close()
-        })*/
     }
 
     function AsignarRoles()
@@ -180,7 +146,7 @@
         $('#tblPermisos').find('input[type=checkbox]:checked').each(function(){
             permisosList.push($(this).attr('data-name'))
         })
-
+        
         if(permisosList.length < 1)
         {
             toastr.error('', 'Seleccione al menos un permiso')
@@ -191,8 +157,8 @@
             toastr.error('', 'Seleccione un Rol')
             return;
         }
-
-        window.livewire.emit('AsignarPermiso', permisosList, $('#roleSelected option:selected').val())
+        
+        window.livewire.emit('AsignarPermisos', permisosList, $('#roleSelected option:selected').val())
     }
 
     document.addEventListener('DOMContentLoaded', function(){

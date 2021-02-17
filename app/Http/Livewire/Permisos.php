@@ -24,6 +24,9 @@ class Permisos extends Component
     public $permisoName;
     public $permisoId;
 
+    public $roleName;
+    public $roleId;
+
     public function render()
     {
         $roles = Role::select('*', DB ::RAW("0 as checked"))->get();
@@ -72,12 +75,17 @@ class Permisos extends Component
 
     public function CrearRole($roleName, $roleId)
     {
-        
-        if($roleId)
-            $this->UpdateRole($roleName, $roleId);
-        else
+        $this->roleId = $roleId;
+        $this->roleName = $roleName;
+        //dd($this->roleName);
+
+        if($this->roleId)
+        {
+            $this->UpdateRole($this->roleName, $this->roleId);
+        }
+        else{
             $this->SaveRole($roleName);
-        
+        }
     }
 
     public function SaveRole($roleName)
@@ -92,7 +100,7 @@ class Permisos extends Component
         Role::create([
             'name'  => $roleName
         ]);
-        SweetAlert::success('Rol Registrado Correctamente', 'Guardando Rol');
+        //SweetAlert::success('Rol Registrado Correctamente', 'Guardando Rol');
         //$this->emit('msg-ok', 'Se registró el rol correctamente');
         $this->resetInput();
     }
@@ -154,12 +162,9 @@ class Permisos extends Component
         if($this->permisoId)
         {
             $this->UpdatePermiso($this->permisoName, $this->permisoId);
-            $this->permisoId = '';
-            $this->permisoName = '';
         }
         else{
             $this->SavePermiso($permisoName);
-            $this->permisoName = '';
         }
             
     }

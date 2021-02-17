@@ -8,16 +8,17 @@
 
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="las la-eraser"></i>borrar
+                    <span class="input-group-text" style="cursor: pointer" onclick="clearRoleSelected()">
+                        Borrar
                     </span>
                 </div>
                 <input type="text" id="roleName" class="form-control" autocomplete="off">
                 <input type="hidden" id="roleId">
                 <div class="input-group-prepend">
-                    <span class="input group-text" style="cursor:pointer" wire:click="$emit('crearRole', $('#roleName').val(), $('#roleId').val() )">
-                        guardar
-                    </span>
+                    <button style="margin-left: 7px" class="btn btn-primary" wire:click="$emit('CrearRole', $('#roleName').val(), $('#roleId').val() )" type="button">
+                        Guardar
+                    </button>
+                    
                 </div>
             </div>
         
@@ -38,13 +39,13 @@
                                 <td class="text-center">{{ \App\Models\User::role($r->name)->count() }}</td>
                                 <td class="text-center">
                                     <span style="cursor: pointer" onclick="showRole('{{ $r }}')">
-                                        <i class="la la-edit la-2x text-center"></i>
+                                        Editar
                                     </span>
 
                                     @if (\App\Models\User::role($r->name)->count() <= 0)
                                         <a href="javascript:void(0)"
                                         onclick="Confirm('{{ $r->id }}', 'destroyRole')"
-                                        title="Eliminar rol"><i class="la la-transh la-2x text-center"></i>
+                                        title="Eliminar rol">Borrar </a>
                                     @endif
                                 </td>
                                 <td class="text-center">
@@ -75,7 +76,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="button" onclick="AsignarRoles()" class="btn btn-primay mt-4">Asignar Roles</button>
+            <button type="button" onclick="AsignarRoles()" class="btn btn-primary mt-3">Asignar Roles</button>
         </div>
     </div>
 </div>
