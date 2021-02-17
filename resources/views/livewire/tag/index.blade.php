@@ -8,7 +8,6 @@
                         <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
                             @include("livewire.tag.$view")
                         </div>
-                        
                     </div>
                     <div class="bg-gray-300 col-span-8">
                         <!-- This example requires Tailwind CSS v2.0+ -->
@@ -45,11 +44,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                
-  
             </div>
         </div>
     </div>

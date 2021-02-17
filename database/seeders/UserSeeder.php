@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'maurotello73@gmail.com',
             'dni'   => '23063889',
             'password' => Hash::make('admin'),
-        ])->assignRole('Admin');
+        ])->assignRole(['Admin', 'Escritor']);
         User::create([
             'name'  => 'Desa Tello',
             'email' => 'desatello@gmail.com',
