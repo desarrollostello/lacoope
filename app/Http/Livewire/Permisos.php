@@ -177,7 +177,7 @@ class Permisos extends Component
             'name'  => $permisoName
         ]);
         //$this->emit('msg-ok', 'Permiso Registrado correctamente');
-        SweetAlert::success('Rol Registrado Correctamente', 'Guardando Rol');
+        //SweetAlert::success('Rol Registrado Correctamente', 'Guardando Rol');
         $this->resetInput();
     }
 
