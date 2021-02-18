@@ -1,19 +1,20 @@
 <div>
     <div class="py-12">
-        <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7x1 mx-auto sm:px-4 lg:px-6">
             <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
                 <div class="grid grid-cols-12 gap-4">
-                    <div class="bg-gray-100 col-span-3">
+                <a href="{{ route('posts.create') }}" class="btn btn-secondary btn-sm float-right">Nuevo Post</a>
+                    <div class="bg-gray-100 col-span-12">
                         <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
                             @include("livewire.user.$view")
                         </div>
                     </div>
-                    <div class="bg-gray-300 col-span-9">
+                    <div class="bg-gray-300 col-span-12">
                         <!-- This example requires Tailwind CSS v2.0+ -->
                         <div class="flex flex-col">
-                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="-my-2 overflow-x-auto sm:-mx-4 lg:-mx-6">
                                 
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-4 lg:px-6">
                                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                         
                                         <div class="bg-white px-4 flex py-3 items-center justify-left border-t border-gray-200 sm:px-6">

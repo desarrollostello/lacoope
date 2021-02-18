@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +21,9 @@ class PostTable extends Component
 
     public $name, $post_id, $exrtact, $body, $status, $user_id, $category_id;
 
+    public $categorySelected;
+    public $tagSelected;
+
     protected $queryString = [
         'search' => ['except' => ''],
         'field' =>  ['except' => null],
@@ -33,7 +38,7 @@ class PostTable extends Component
 
     public function render()
     {
-        $posts = Post::where('name', 'LIKE', "%$this->search%");
+        $posts = Post::where('name', 'LIKE', "%$this->search%")->orderBy('created_at', 'desc');
         if ($this->field && $this->order) {
             $posts = $posts->orderBy($this->field, $this->order);
         }else{
@@ -83,5 +88,15 @@ class PostTable extends Component
     {
         $this->name = '';
         $this->view = 'create';
+    }
+
+    public function create()
+    {
+        $categories = Category::select('name', 'id')->get();
+        $tags = Tag::all();
+        return view('livewire.posts.create',[
+            'categories'    =>$categories,
+            'tags'          => $tags
+        ] );
     }
 }

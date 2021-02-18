@@ -14,7 +14,7 @@ class Category extends Model
         'slug',
     ];
 
-    // relación uno a muchos
+    // relación muchos a muchos
     public function posts()
     {
         return $this->belongsToMany(Post::class);

@@ -30,6 +30,8 @@ Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('r
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', PostTable::class)->name('posts');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('post/nuevo', [PostTable::class, 'create'])->name('posts.create');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
