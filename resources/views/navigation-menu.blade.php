@@ -20,6 +20,11 @@
             'route'  => route('tags'),
             'active' => request()->routeIs('tags')
         ],
+        [
+            'name'   => 'Roles',
+            'route'  => route('roles'),
+            'active' => request()->routeIs('roles')
+        ],
     ];
 @endphp
 

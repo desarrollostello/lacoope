@@ -54,8 +54,25 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/toastr.min.js') }}"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
  
         @include('sweet::alert')
 
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#extract' ) )
+                .catch( error => {
+                    console.error( error );
+            } );
+        
+            ClassicEditor
+                .create( document.querySelector( '#body' ) )
+                .catch( error => {
+                    console.error( error );
+            } );
+        </script>
+        
+            
+     
     </body>
 </html>

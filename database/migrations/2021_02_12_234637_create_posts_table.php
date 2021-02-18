@@ -23,10 +23,10 @@ class CreatePostsTable extends Migration
             $table->enum('status', [1, 2])->default(1); // 1 borrador y 2 publicado
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('category_id');
+            //$table->unsignedBigInteger('category_id');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
+            //$table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
         });
