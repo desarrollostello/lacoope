@@ -7,7 +7,6 @@ use App\Models\Post;
 use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithPagination;
-
 use Illuminate\Support\Str;
 
 class PostTable extends Component
@@ -19,10 +18,13 @@ class PostTable extends Component
 
     public $view = 'create';
 
-    public $name, $post_id, $exrtact, $body, $status, $user_id, $category_id;
+    public $name, $post_id, $extract, $body, $status, $user_id, $created_at;
 
-    public $categorySelected;
-    public $tagSelected;
+    public $categoriesSelected = [];
+    public $tagsSelected = [];
+
+    public $tags = [];
+    public $categories = [];
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -31,13 +33,27 @@ class PostTable extends Component
         'perPage'
     ];
 
+
+    protected $rules = [
+        'name'          => 'required',
+        //'created_at'    => 'date',
+        'status'        => 'required',
+        'extract'       => 'required',
+        'body'          => 'required',
+        
+    ];
+
     public $field = null;
     public $order = null;
 
-
-
     public function render()
     {
+        $categories = Category::select('name', 'id')->get();
+        $tags = Tag::all();
+
+        $this->tags = $tags;
+        $this->categories = $categories;
+
         $posts = Post::where('name', 'LIKE', "%$this->search%")->orderBy('created_at', 'desc');
         if ($this->field && $this->order) {
             $posts = $posts->orderBy($this->field, $this->order);
@@ -49,7 +65,7 @@ class PostTable extends Component
         $posts = $posts->paginate($this->perPage);
 
         return view('livewire.posts.index',[
-            'posts' => $posts
+            'posts'         => $posts,
         ]);
     }
 
@@ -92,11 +108,52 @@ class PostTable extends Component
 
     public function create()
     {
-        $categories = Category::select('name', 'id')->get();
-        $tags = Tag::all();
+      //  $categories = Category::select('name', 'id')->get();
+      //  $tags = Tag::all();
         return view('livewire.posts.create',[
-            'categories'    =>$categories,
-            'tags'          => $tags
+           // 'categories'    =>$categories,
+           // 'tags'          => $tags
         ] );
+    }
+
+    public function store()
+    {
+       dd($this->extract);
+
+       // $validatedData = $this->validate();
+        //$post = Post::create($validatedData);
+        $post = Post::create([
+            'name'  => $this->name,
+            'status'    => $this->status,
+            'extract'   => $this->extract,
+            'body'      => $this->body,
+            'slug'      => Str::slug($this->name),
+            'user_id'   => auth()->user()->id
+        ]);
+
+        if ($this->tagsSelected)
+        {
+            $post->tags()->attach($this->tagsSelected);
+        }
+
+        if ($this->categoriesSelected)
+        {
+            $post->categories()->attach($this->categoriesSelected);
+        }
+
+        session()->flash('message', 'Evento Creado Satisfactoriamente!!!.');
+        $this->resetInputFields();
+
+    }
+
+    public function resetInputFields()
+    {
+        $this->status = '1';
+        $this->name = '';
+        $this->extract = '';
+        $this->body = '';
+        $this->tagsSelected = '';
+        $this->categoriesSelected= '';
+
     }
 }

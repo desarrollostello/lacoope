@@ -16,7 +16,6 @@ class Post extends Model
         'body',
         'status',
         'user_id',
-        'category_id'
     ];
 
     // relacion uno a muchos inversa
