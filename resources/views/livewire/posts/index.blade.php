@@ -6,7 +6,7 @@
                 <a href="{{ route('posts.create') }}" class="btn btn-secondary btn-sm float-right">Nuevo Post</a>
                     <div class="bg-gray-100 col-span-12">
                         <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
-                            @include("livewire.user.$view")
+                            @include("livewire.posts.$view")
                         </div>
                     </div>
                     <div class="bg-gray-300 col-span-12">
