@@ -18,7 +18,7 @@ class PostTable extends Component
 
     public $view = 'create';
 
-    public $name, $post_id, $extract, $body, $status, $user_id, $created_at;
+    public $name, $date, $post_id, $extract, $body, $status, $user_id, $created_at;
 
     public $categoriesSelected = [];
     public $tagsSelected = [];
@@ -35,13 +35,24 @@ class PostTable extends Component
 
 
     protected $rules = [
-        'name'          => 'required',
-        //'created_at'    => 'date',
+        'name'          => 'required|unique:posts',
+        'date'          => 'required|date',
         'status'        => 'required',
         'extract'       => 'required',
         'body'          => 'required',
+        'date'          => 'required|date'
         
     ];
+    protected $messages = [
+        'date.required'         => 'El campo Fecha de publicación es obligatoria',
+        'name.required'         => 'El campo Titulo es obligatorio',
+        'status.required'       => 'El campo Status es obligatorio',
+        'extract.required'      => 'El Campo Extract es obligatorio',
+        'body.required'         => 'El Campo Body es obligatorio',
+        'name.unique'           => 'El campo Título ya existe en nuestra base de datos, debe ser único',
+        
+    ];
+
 
     public $field = null;
     public $order = null;
@@ -108,26 +119,22 @@ class PostTable extends Component
 
     public function create()
     {
-      //  $categories = Category::select('name', 'id')->get();
-      //  $tags = Tag::all();
-        return view('livewire.posts.create',[
-           // 'categories'    =>$categories,
-           // 'tags'          => $tags
-        ] );
+        return view('livewire.posts.create');
     }
 
     public function store()
     {
-       dd($this->extract);
+       
+       $validatedData = $this->validate();
+       
 
-       // $validatedData = $this->validate();
-        //$post = Post::create($validatedData);
         $post = Post::create([
-            'name'  => $this->name,
-            'status'    => $this->status,
-            'extract'   => $this->extract,
-            'body'      => $this->body,
-            'slug'      => Str::slug($this->name),
+            'name'      => $validatedData['name'],
+            'date'      => $validatedData['date'],
+            'status'    => $validatedData['status'],
+            'extract'   => $validatedData['extract'],
+            'body'      => $validatedData['body'],
+            'slug'      => Str::slug($validatedData['name']),
             'user_id'   => auth()->user()->id
         ]);
 
@@ -155,5 +162,14 @@ class PostTable extends Component
         $this->tagsSelected = '';
         $this->categoriesSelected= '';
 
+    }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        $this->post_id = $post->id;
+        $this->name = $post->name;
+
+        $this->view = 'edit';
     }
 }

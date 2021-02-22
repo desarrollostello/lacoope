@@ -1,7 +1,7 @@
 <div>
     <div class="mb-4">
-        <label for="created_at" class="form-label mb-2">Fecha de Publicación</label>
-        <input type="date" wire:model.lazy="created_at" id="created_at" placeholder="Ingrese un título" class="form-control" required/>
+        <label for="date" class="form-label mb-2">Fecha de Publicación</label>
+        <input type="date" wire:model.lazy="date" id="date" placeholder="Ingrese un título" class="form-control" required/>
     </div>
 
     <div class="mb-4">
@@ -39,13 +39,13 @@
     <div class="mb-4">
         <label for="extract" class="form-label mb-2">Extracto</label>
 
-        <textarea id="extract" name="extract" rows="4" cols="50" class="ckeditor form-control" placeholder="Ingrese un Extracto" required wire:model.lazy="extract"></textarea>
+        <textarea id="extract" name="extract" rows="4" cols="50" class="form-control" placeholder="Ingrese un Extracto" required wire:model.lazy="extract"></textarea>
     </div>
 
     <div class="mb-4">
         <label for="body" class="form-label mb-2">Contenido</label>
 
-       <textarea id="body" name="body" rows="4" cols="80" class="ckeditor form-control" placeholder="Ingrese el cuerpo de la Noticia" required wire:model.lazy="body"></textarea>
+       <textarea id="body" name="body" rows="4" cols="80" class="form-control" placeholder="Ingrese el cuerpo de la Noticia" required wire:model.lazy="body"></textarea>
     </div>
 
     <div class="form-group">

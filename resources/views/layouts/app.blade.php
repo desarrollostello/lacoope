@@ -59,6 +59,7 @@
  
         @include('sweet::alert')
   
+        {{--
         <script>
             CKEDITOR.replace('#extract').on('change', function(e){
                 this.set('extract', e.editor.getData());
@@ -68,5 +69,6 @@
                 this.set('body', e.editor.getData());
             });
         </script>
+            --}}
     </body>
 </html>
