@@ -15,9 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-
+            $table->date('date');
             $table->string('name')->unique();
+            
             $table->string('slug')->unique();
+
             $table->text('extract');
             $table->longText('body');
             $table->enum('status', [1, 2])->default(1); // 1 borrador y 2 publicado
