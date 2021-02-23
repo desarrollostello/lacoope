@@ -12,18 +12,6 @@
         @enderror
     </div>
 
-    {{-- 
-    <div class="mb-4">
-        <label for="extract" class="form-label mb-2">Categorías</label>
-        <select wire:model="categorySelected" name="" id="categorySelected" class="form-control">
-            <option value="Seleccionar">Seleccionar</option>
-            @foreach ($categories as $c)
-                <option value="{{ $c->id }}">{{ $c->name }}</option>
-            @endforeach
-        </select>
-    </div>
-    --}}
-
     <div class="mb-4">
         <label for="status" class="form-label mb-2">Estado</label>
         <label>
