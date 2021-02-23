@@ -3,11 +3,12 @@
     @if($post->image)
         <img class="w-full h-72 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="" />
     @else
-    <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2021/02/08/15/02/mountains-5995081_960_720.jpg" alt="" />
+    <img class="w-full h-72 object-cover object-center" src="{{ Storage::url('montania.jpg') }}" alt="" />
     @endif
     <div class="px-6 py-4">
         <h1 class="font-bold text-xl mb-2">
             <a href="{{ route('posts.show', $post) }}">{{ $post->name }}</a>
+        <span class="text-gray-700 text-base">(Fecha de Publicación: {{ $post->published }})</span>
         </h1>
         <div class="text-gray-700 text-base">{!! $post->extract !!}</div>
     </div>

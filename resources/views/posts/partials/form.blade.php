@@ -2,6 +2,9 @@
     <label for="published" class="form-label mb-2">Fecha de Publicación</label>
     {{-- <input type="date" id="published" name="published" class="form-control" required/>--}}
     {!! Form::date('published', null, ['class'=>'form-control']) !!}
+    @error('published')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
 </div>
 
 <div class="form-group">
@@ -12,7 +15,6 @@
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>
-
 
 <div class="form-group">
     <p class="font-weight-bold">Categorías: </p>
@@ -65,7 +67,7 @@
             @isset($post->image)
                 <img id="picture" src="{{ Storage::url($post->image->url) }}" alt="">
             @else
-                <img id="picture" src="https://cdn.pixabay.com/photo/2021/02/08/15/02/mountains-5995081_960_720.jpg" alt="">
+                <img id="picture" src="{{ Storage::url('montania.jpg') }}" alt="">
             @endif
         </div>
         

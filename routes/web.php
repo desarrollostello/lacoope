@@ -27,7 +27,9 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)->name('tags');
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts2', PostTable::class)->name('posts2');
 Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('roles');
+
 
 
 
@@ -39,7 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('nuevo', [PostController::
 
 Route::middleware(['auth:sanctum', 'verified'])->get('editar/{post}', [PostController::class, 'edit'])->name('post.edit');
 Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{post}', [PostController::class, 'update'])->name('post.update');
-
+Route::middleware(['auth:sanctum', 'verified'])->patch('destroy/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/category/{category}', [PostController::class, 'category'])->name('posts.category');

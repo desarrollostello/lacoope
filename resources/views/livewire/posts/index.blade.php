@@ -3,11 +3,13 @@
         <div class="max-w-7x1 mx-auto sm:px-4 lg:px-6">
             <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
                 <div class="grid grid-cols-12 gap-4">
-                <a href="{{ route('posts.create') }}" class="btn btn-secondary btn-sm float-right">Nuevo Post</a>
+                <a href="{{ route('post.create') }}" class="btn btn-secondary btn-sm float-right">Nueva Noticia</a>
                     <div class="bg-gray-100 col-span-12">
+                        {{-- 
                         <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
                             @include("livewire.posts.$view")
                         </div>
+                        --}}
                     </div>
                     <div class="bg-gray-300 col-span-12">
                         <!-- This example requires Tailwind CSS v2.0+ -->

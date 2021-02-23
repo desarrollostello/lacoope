@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 py-8">
         <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
-            <h1 class="uppercase txt-center text-2xl font-bold">Nuevo Post</h1>
+            <h1 class="uppercase txt-center text-2xl font-bold">Nueva Noticia</h1>
 
             {!! Form::open(['route' => 'post.store', 'autocomplete' => 'off', 'files' => true]) !!}
                 @include('posts.partials.form')

@@ -15,9 +15,9 @@
                 <div class="lg:col-span-2">
                     <figure>
                         @if($post->image)
-                            <img class="w-full h-80 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="">
+                            <img class="w-full object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="">
                         @else
-                            <img class="w-full h-80 object-cover object-center" src="https://cdn.pixabay.com/photo/2021/02/08/15/02/mountains-5995081_960_720.jpg" alt="">
+                            <img class="w-full object-cover object-center" src="https://cdn.pixabay.com/photo/2021/02/08/15/02/mountains-5995081_960_720.jpg" alt="">
                         @endif
                     </figure>
                     <div class="text-base text-gray-500 mt-4">
@@ -49,10 +49,11 @@
                             <li class="mb-4">
                                 <a class="flex" href="{{ route('posts.show', $similar) }}">
                                     @if($similar->image)
-                                        <img class="w-36 h-20 object-cover object-center" src="{{ Storage::url($similar->image->url) }}" /> </a>
+                                        <img class="w-50 h-40 object-cover object-center" src="{{ Storage::url($similar->image->url) }}" /> </a>
                                     @else
-                                    <img class="w-36 h-20 object-cover object-center" src="https://cdn.pixabay.com/photo/2021/02/08/15/02/mountains-5995081_960_720.jpg" /> </a>
+                                    <img class="w-36 h-20 object-cover object-center" src="{{ Storage::url('montania.jpg') }}" /> </a>
                                     @endif
+                                    <span>Publicado: {{ $similar->published }}</span><br>
                                     <span class="ml-2 text-gray-600">{{ $similar->name }}</span>
                             </li>
                         @endforeach

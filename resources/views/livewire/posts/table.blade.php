@@ -34,7 +34,7 @@
                 <tr>
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $post->created_at->format('d-m-Y')}}
+                            {{ $post->published }}
                         </div>
                     </td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
@@ -82,8 +82,9 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button wire:click="edit({{ $post->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
-                        <button wire:click="destroy({{ $post->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
+                        <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Ver Noticia</a>
+                        <a href="{{ route('post.edit', $post) }}"  class="btn btn-warning">Editar</a>
+                        <a href="{{ route('post.destroy', $post) }}"  class="btn btn-danger">Borrar</a>
                     </td>
                 </tr>
             @endforeach
