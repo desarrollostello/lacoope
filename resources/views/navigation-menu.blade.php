@@ -36,6 +36,12 @@
             'route'  => route('posts2'),
             'active' => request()->routeIs('posts2')
         ],
+        
+        [
+            'name'   => 'Listado de Popups',
+            'route'  => route('popups2'),
+            'active' => request()->routeIs('popups2')
+        ],
     ];
 @endphp
 
