@@ -75,4 +75,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    // relación uno a muchos
+    public function popus()
+    {
+        return $this->hasMany(Popup::class);
+    }
 }
