@@ -25,6 +25,7 @@ class CategoryFactory extends Factory
         $name = $this->faker->unique()->word(20);
         return [
             'name'  => $name,
+            'color' => $this->faker->randomElement(['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'ping']),
             'slug'  => Str::slug($name)
         ];
     }

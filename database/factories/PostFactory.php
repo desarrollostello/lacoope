@@ -27,7 +27,7 @@ class PostFactory extends Factory
         $name = $this->faker->unique()->sentence();
         return [
             'name'          => $name,
-            'date'          => $this->faker->date(),
+            'published'     => $this->faker->date(),
             'slug'          => Str::slug($name),
             'extract'       => $this->faker->text(250),
             'body'          => $this->faker->text(2000),

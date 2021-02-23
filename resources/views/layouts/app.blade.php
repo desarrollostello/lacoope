@@ -54,21 +54,36 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/toastr.min.js') }}"></script>
-         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>--}}
-         <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
- 
-        @include('sweet::alert')
-  
-        {{--
-        <script>
-            CKEDITOR.replace('#extract').on('change', function(e){
-                this.set('extract', e.editor.getData());
-            });
+        
 
-            CKEDITOR.replace('#body').on('change', function(e){
-                this.set('body', e.editor.getData());
-            });
+        @include('sweet::alert')
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#extract' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+
+                ClassicEditor
+                .create( document.querySelector( '#body' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+
+
+            document.getElementById('file').addEventListener('change', cambiarImagen);
+            function cambiarImagen(event)
+            {
+                var file = event.target.files[0];
+
+                var reader = new FileReader();
+                reader.onload = (event) => {
+                    document.getElementById("picture").setAttribute('src', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
         </script>
-            --}}
     </body>
 </html>

@@ -34,7 +34,16 @@ Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('r
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('nuevo', [PostController::class, 'create'])->name('post.create');
+Route::middleware(['auth:sanctum', 'verified'])->post('nuevo', [PostController::class, 'store'])->name('post.store');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('editar/{post}', [PostController::class, 'edit'])->name('post.edit');
+Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{post}', [PostController::class, 'update'])->name('post.update');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/category/{category}', [PostController::class, 'category'])->name('posts.category');
+Route::middleware(['auth:sanctum', 'verified'])->get('/tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('post/nuevo', [PostTable::class, 'create'])->name('posts.create');
 
