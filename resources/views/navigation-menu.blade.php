@@ -25,6 +25,17 @@
             'route'  => route('roles'),
             'active' => request()->routeIs('roles')
         ],
+        [
+            'name'   => 'Noticias',
+            'route'  => route('posts.index'),
+            'active' => request()->routeIs('posts.index')
+        ],
+        
+        [
+            'name'   => 'Noticias Live',
+            'route'  => route('posts2'),
+            'active' => request()->routeIs('posts2')
+        ],
     ];
 @endphp
 
@@ -43,12 +54,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @foreach ($nav_links as $nav_link)
-                        <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                            {{ $nav_link['name'] }}
-                        </x-jet-nav-link>
-                    @endforeach
-                    
+                    @guest
+
+                    @else
+                        @foreach ($nav_links as $nav_link)
+                            <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                                {{ $nav_link['name'] }}
+                            </x-jet-nav-link>
+                        @endforeach
+                    @endguest
 
                     
                 </div>
@@ -180,13 +194,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-
-            @foreach ($nav_links as $nav_link)
-                <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                    {{ $nav_link['name'] }}
-                </x-jet-responsive-nav-link>
-            @endforeach
-            
+            @auth 
+                @foreach ($nav_links as $nav_link)
+                    <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                        {{ $nav_link['name'] }}
+                    </x-jet-responsive-nav-link>
+                @endforeach
+            @endauth
 
         </div>
 

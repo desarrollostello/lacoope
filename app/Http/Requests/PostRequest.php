@@ -25,6 +25,8 @@ class PostRequest extends FormRequest
     {
         //$post = $this->route('post');
         $post = $this->route()->parameter('post');
+
+        $todayDate = date('d-m-Y');
         switch ($this->method()) 
         {
             case 'GET':
@@ -35,7 +37,7 @@ class PostRequest extends FormRequest
             case 'POST': 
             {
                 return [
-                    'published'     => 'required',
+                    'published'     => 'required|before_or_equal:' . $todayDate,
                     'name'          => 'required|min:4|max:200',
                     'status'        => 'required|in:1,2',
                     'slug'          => 'nullable',
@@ -52,7 +54,7 @@ class PostRequest extends FormRequest
             {
                 return 
                 [
-                    'published'     => 'required',
+                    'published'     => 'required|before_or_equal:' . $todayDate,
                     'name'          => 'required|min:4|max:200',
                     'status'        => 'required|in:1,2',
                     'categories'    => 'required',
@@ -71,7 +73,7 @@ class PostRequest extends FormRequest
     {
         return [
             'published.required'    => 'El campo Fecha de publicación es obligatoria',
-            //'date.date'             => 'El campo Fecha no es válido',
+            'published.before_or_equal' => 'El campo Fecha de publicación debe ser una fecha menor o igual al día de hoy',
             'categories.required'   => 'Deberá seleccionar al menos una categoría',
             'tags.required'         => 'Deberá seleccioanr al menos un Tag',
             'name.required'         => 'El campo Titulo es obligatorio',

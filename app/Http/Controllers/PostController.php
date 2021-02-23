@@ -15,12 +15,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::where('status', 2)->latest('id')->paginate(10);
+        $posts = Post::latest('published')->paginate(10);
         return view('posts.index',[
             'posts' =>$posts
         ]);
     }
 
+    
     public function create()
     {
         $tags = Tag::all();
@@ -71,7 +72,7 @@ class PostController extends Controller
     {
         $etiqueta = $post->categories[0]->id;
         $categoria = Category::where('id', $etiqueta)->first();
-        $similares = $categoria->posts()->where('status', 2)->where('post_id', '!=', $post->id)->latest('id')->take(4)->get();
+        $similares = $categoria->posts()->where('post_id', '!=', $post->id)->latest('id')->take(4)->get();
         
         return view('posts.show', [
             'post'      => $post,
@@ -90,6 +91,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('author', $post);
         $tags = Tag::all();
         $categories = Category::all();
         return view('posts.edit', [
@@ -101,6 +103,7 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
+        $this->authorize('author', $post);
         $post->update($request->all());
 
         if ($request->file('file'))
@@ -131,7 +134,7 @@ class PostController extends Controller
             $post->categories()->sync($request->categories);
         }
 
-        return redirect()->route('post.edit', $post)->with('info', 'La Noticia se actualizó correctamente');
+        return redirect()->route('posts.show', $post)->with('info', 'La Noticia se actualizó correctamente');
 
     }
 
@@ -146,6 +149,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('author', $post);
         $post->delete();
     }
 }
