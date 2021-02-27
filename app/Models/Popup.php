@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Collective\Html\Eloquent\FormAccessible;
 
 class Popup extends Model
 {
     use HasFactory;
+    use FormAccessible;
+
+    protected $dates = ['start_date', 'end_date'];
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date'
+    ];
 
     protected $fillable = [
         'name',
@@ -25,7 +33,7 @@ class Popup extends Model
 
     public function setStartDateAttribute($val)
     {
-        $this->attributes['published'] = \Carbon\Carbon::parse($val)->format('Y-m-d');
+        $this->attributes['start_date'] = \Carbon\Carbon::parse($val)->format('Y-m-d');
     }
 
     public function getStartDateAttribute($val)
@@ -40,7 +48,7 @@ class Popup extends Model
 
     public function setEndDateAttribute($val)
     {
-        $this->attributes['published'] = \Carbon\Carbon::parse($val)->format('Y-m-d');
+        $this->attributes['end_date'] = \Carbon\Carbon::parse($val)->format('Y-m-d');
     }
 
     public function getEndDateAttribute($val)

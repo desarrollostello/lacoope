@@ -10,7 +10,7 @@ use App\Http\Livewire\CategoriesTable;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\PostTable;
 use App\Http\Livewire\PopupTable;
-
+use App\Http\Controllers\CkeditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
+Route::resource('ckeditor', CkeditorController::class);
+
+
+//ckeditor upload
+//Route::post('Ckeditor/image_upload', [CkeditorController::class, 'upload'])->name('upload');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)->name('tags');
@@ -35,15 +43,21 @@ Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('r
 
 
 
+
+
+
+//ckeditor upload
+Route::post('posts/image_upload', [PostController::class, 'upload'])->name('upload');
+
 // Posts
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts2', PostTable::class)->name('posts2');
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
 Route::middleware(['auth:sanctum', 'verified'])->get('nuevo', [PostController::class, 'create'])->name('post.create');
 Route::middleware(['auth:sanctum', 'verified'])->post('nuevo', [PostController::class, 'store'])->name('post.store');
 Route::middleware(['auth:sanctum', 'verified'])->get('editar/{post}', [PostController::class, 'edit'])->name('post.edit');
 Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{post}', [PostController::class, 'update'])->name('post.update');
-Route::middleware(['auth:sanctum', 'verified'])->patch('destroy/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('destroy/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 
 //Popup
@@ -52,9 +66,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/popups', [PopupController
 Route::middleware(['auth:sanctum', 'verified'])->get('/popups/{popup}', [PopupController::class, 'show'])->name('popup.show');
 Route::middleware(['auth:sanctum', 'verified'])->get('nuevo', [PopupController::class, 'create'])->name('popup.create');
 Route::middleware(['auth:sanctum', 'verified'])->post('nuevo', [PopupController::class, 'store'])->name('popup.store');
-Route::middleware(['auth:sanctum', 'verified'])->get('editar/{popup}', [PopupController::class, 'edit'])->name('popup.edit');
-Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{popup}', [PopupController::class, 'update'])->name('popup.update');
-Route::middleware(['auth:sanctum', 'verified'])->patch('destroy/{popup}', [PopupController::class, 'destroy'])->name('popup.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('editarpopup/{popup}', [PopupController::class, 'edit'])->name('popup.edit');
+Route::middleware(['auth:sanctum', 'verified'])->patch('editarpopup/{popup}', [PopupController::class, 'update'])->name('popup.update');
+Route::middleware(['auth:sanctum', 'verified'])->get('destroypopup/{popup}', [PopupController::class, 'destroy'])->name('popup.destroy');
 
 
 

@@ -64,7 +64,7 @@
             @isset($popup->url)
                 <img id="picture" src="{{ Storage::url($popup->url) }}" alt="">
             @else
-                <img id="picture" src="{{ Storage::url('montania.jpg') }}" alt="">
+                <img id="picture" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
             @endif
         </div>
         

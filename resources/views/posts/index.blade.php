@@ -3,7 +3,7 @@
     <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8 mt-5 mb-5">
         <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
             
-            <a href="{{ route('post.create') }}" class="btn btn-primary">Nueva Noticia</a>
+            {{-- <a href="{{ route('post.create') }}" class="btn btn-primary">Nueva Noticia</a>--}}
 
             <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-footer text-muted">
                             <div class="overflow-hidden pt-2">
-                                <a href="{{ route('posts.show', $p) }}" class="btn btn-primary">Ver Noticia</a>
+                                <a href="{{ route('post.show', $p) }}" class="btn btn-primary">Ver Noticia</a>
                                 <a href="{{ route('post.edit', $p) }}"  class="btn btn-warning">Editar Noticia</a>
                             </div>
                         </div>
