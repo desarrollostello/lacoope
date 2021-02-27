@@ -6,6 +6,9 @@ use App\Models\Popup;
 use App\Http\Requests\PopupRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PopupController extends Controller
 {
@@ -27,23 +30,28 @@ class PopupController extends Controller
 
     public function store(PopupRequest $request)
     {
-        
-        $popup = Popup::create([
-            'name'      => $request->name,
-            'published' => $request->published,
-            'status'    => $request->status,
-            'extract'   => $request->extract,
-            'body'      => $request->body,
-            'slug'      => Str::slug($request->name)
-            //'user_id'   => auth()->user()->id
-        ]);
+        $url = "";
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        $data['slug'] = Str::slug($request->name);
 
         if($request->file('file'))
         {
-            $url = Storage::put('popups', $request->file('file'));
+            $value = $request->file('file');
+            $imageName = time() . '-' . $value->getClientOriginalName();
+            $value->move(public_path('storage/popups/'), $imageName);
+            $data['file'] = public_path('storage/popups/') . $imageName;
+        }
+        
+        if (Popup::create($data))
+        {
+            Session::flash('message-success', 'Popup creado satisfactoriamente.');
+        
+        }else{
+            Session::flash('message-danger', 'Error al intentar guardar el Popup');
         }
 
-        return redirect()->route('popups.index');
+        return redirect()->route('popups2');
     }
 
     public function show(Popup $popup)
@@ -56,8 +64,7 @@ class PopupController extends Controller
 
     public function edit(Popup $popup)
     {
-        //$this->authorize('popup', $popup);
-        $popup = Popup::all();
+        //$popup = Popup::all();
         return view('popups.edit', [
             'popup'  => $popup
         ]);
@@ -65,7 +72,6 @@ class PopupController extends Controller
 
     public function update(PopupRequest $request, Popup $popup)
     {
-        //$this->authorize('author', $post);
         $imagenActual = $popup->url;
         $popup->update($request->all());
 
@@ -85,11 +91,11 @@ class PopupController extends Controller
     public function destroy(Popup $popup)
     {
         $imagenActual = $popup->url;
-        //$this->authorize('author', $post);
         $borrado = $popup->delete();
         if($imagenActual && $borrado)
         {
             Storage::delete($popup->url);
         }
+        return redirect()->route('popups2')->with('info', 'El Popup se ha eliminado correctamente');
     }
 }

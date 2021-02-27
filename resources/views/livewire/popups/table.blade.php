@@ -2,6 +2,9 @@
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
+                <th scope="col" class="cursor-pointer px-4 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Imágen
+                </th>
                 <th scope="col" class="cursor-pointer px-4 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider" wire:click="sortBy('start_date')">
                     Fecha Inicio
                 </th>
@@ -28,7 +31,18 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
             @foreach ($popups as $popup)
+            
                 <tr>
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+                        <div class="text-center text-sm font-medium text-gray-900">
+                            @if($popup->file)
+                            <img style="max-width: 150px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('popups/' . $popup->file) }}" alt="">
+                            @else
+                                <img style="max-width: 150px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
+                            @endif
+                            
+                        </div>
+                    </td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $popup->start_date }}

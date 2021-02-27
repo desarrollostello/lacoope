@@ -29,7 +29,7 @@ class PopupRequest extends FormRequest
         $todayDate = date('d-m-Y');
         switch ($this->method()) 
         {
-            case 'GET':
+            //case 'GET':
             case 'DELETE': 
             {
                 return [];

@@ -20,8 +20,8 @@ class CretePopupTable extends Migration
             $table->string('slug');
             $table->string('title')->nullable();
             $table->text('text')->nullable();
-            $table->datetime('start_date');
-            $table->datetime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->bigInteger('visualizations')->default(0);
             $table->enum('status', [1, 2])->default(1);
             $table->string('file')->nullable();

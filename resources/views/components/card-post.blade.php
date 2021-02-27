@@ -7,7 +7,7 @@
     @endif
     <div class="px-6 py-4">
         <h1 class="font-bold text-xl mb-2">
-            <a href="{{ route('posts.show', $post) }}">{{ $post->name }}</a>
+            <a href="{{ route('post.show', $post) }}">{{ $post->name }}</a>
         <span class="text-gray-700 text-base">(Fecha de Publicación: {{ $post->published }})</span>
         </h1>
         <div class="text-gray-700 text-base">{!! $post->extract !!}</div>

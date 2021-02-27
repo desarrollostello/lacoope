@@ -22,8 +22,16 @@ class PopupTable extends Component
     public function render()
     {
         $popups = Popup::where('name', 'LIKE', "%$this->search%")->orderBy('start_date', 'desc');
-        if ($this->field && $this->order) {
-            $popups = $popups->orderBy($this->field, $this->order);
+        if ($this->field && $this->order) 
+        {
+            //dd($this->field . ' - ' . $this->order);
+
+            if($this->field == 'start_date'){
+                $popups = $popups->orderBy($this->field, $this->order);
+            }else{
+                $popups = $popups->orderBy($this->field, $this->order);
+            }
+            
         }else{
             $this->field = null;
             $this->order = null;

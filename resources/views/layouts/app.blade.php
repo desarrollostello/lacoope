@@ -58,13 +58,13 @@
 
         @include('sweet::alert')
 
-        <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+        <script src="http://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"> </script>
         <script>
-                ClassicEditor
-                .create( document.querySelector( '#body' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
+
+            CKEDITOR.replace( 'body', {
+                filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form'
+            });
 
 
             document.getElementById('file').addEventListener('change', cambiarImagen);
