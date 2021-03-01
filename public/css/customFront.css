@@ -1,0 +1,531 @@
+.mycontainer{
+  max-width: 1280px !important;
+}
+.nav-item.active{
+  font-weight: 700;
+}
+
+.text-center{
+  text-align: center;
+
+}
+
+.bg-light{
+  background-color: #fff !important;
+}
+
+.navbar{
+  padding: 0px !important;
+}
+
+.menu{
+  padding-left: 0px !important;
+}
+.logo{
+  padding-right: 0px !important;
+}
+
+#navbarNav{
+  font-size: 0.9rem !important
+}
+
+.nav-item{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#ingreso-clientes{
+  font-size: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #F2F3F5;
+  display: flex;
+  color: #026CC0;
+}
+
+.active > .nav-link{
+    color: blue !important;
+}
+
+.text-coope{
+  line-height: 1.3em;
+  font-size: 1.1rem;
+  color: #8E8E8E;
+  font-size: 16px;
+}
+
+.text-color{
+  color: #8E8E8E;
+}
+
+.text-image-servicios{
+  font-size: 0.8rem;
+  color: #026CC0;
+  font-weight: bold;
+}
+
+.blue{
+  background-color: #126DBC;
+}
+
+.blue-light{
+  background-color: #83C6FD;
+}
+
+#texto-institucional{
+  line-height: 1.6rem;
+}
+
+.back-celeste{
+  background-color: #68AFE7;
+}
+
+.line{
+  width: 100%;
+}
+
+hr{
+  height: 2px;
+  background-color: #68AFE7;
+}
+
+.celeste{
+  color: #68AFE7;
+}
+
+.historia-number{
+  font-size: 70px;
+  color: #68AFE7;
+  font-weight: bolder;
+}
+
+.historia-title{
+  font-size: 20px;
+}
+
+.historia-text{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.redondel{
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  border: 3px solid #ffffff;
+}
+
+.mt-6{
+  margin-top: 5rem;
+}
+
+.mb-6{
+  margin-bottom: 5rem;
+}
+
+.informacion{
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+}
+
+.buttons-eventos-boletin
+{
+  background-color: #fff;
+  font-weight: bold;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.9rem;
+
+}
+
+.title-eventos-boletin
+{
+  font-size: 5rem;
+  font-weight: bold;
+
+}
+
+.title-boletin{
+  color: #026CC0;
+}
+
+.title-evento{
+  color: #57C5FF;
+}
+
+.title-cantact{
+  color: #0B6CC6;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.datos{
+  display: flex; align-items: center; line-height: 2.5rem;
+}
+
+.contact-icon{
+  font-size: 32px !important;
+  padding-right: 20px;
+}
+
+.datos-contacto{
+  color: #0B6CC6;
+}
+
+.celular{
+  font-size: 40px; color: #99A1A4; 
+}
+
+#datos-de-contacto{
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  align-content: flex-start;
+}
+
+.title-escribenos{
+  color: #8A999E;
+  margin-bottom: 30px;
+  font-size: 3rem !important;
+  
+}
+
+.negrita-600{
+  font-weight: 600;
+}
+
+.bmd-label-floating{
+  font-size: 22px;
+  color: #8A999E;
+}
+
+.text-contactanos{
+  color: #99A1A4; font-size: 20px
+}
+
+.horario{
+  font-weight: 900;;
+}
+
+.historia{
+  padding: 0px !important;
+}
+
+
+.button-boletin
+{
+  margin-top: 1rem;
+}
+
+#subscribirse::placeholder
+{
+  color: #026CC0;
+}
+
+#subscribirse
+{
+  background-color: #9FD0FB;
+  border: none;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.site-header{
+	background-color: #026CC0;
+  font-size: .8rem !important;
+}
+.reloj{ margin-top: .20rem !important; padding-right: .5rem !important}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+/*** boletin eventos *****/
+.boletin-eventos{
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  padding-left: 2.5rem;
+  padding-right:2.5rem;
+}
+.eventos{
+  background-color: #026CC0;
+  display: flex;
+  align-items: center;
+}
+.boletin{
+  background-color: #57C5FF;
+}
+
+.centrar-flex
+{
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.azul{
+  color: #026CC0;
+}
+
+.negrita{
+  font-weight: 900;
+}
+
+
+
+#escribenos{
+  background-color: #D9DEE1;
+  padding-left: 80px;
+  padding-right: 0px !important;
+}
+
+.form-control{
+  background-color: #D9DEE1;
+  border: none;
+  border-bottom: 2px solid #8A999E;
+
+}
+
+.botones{
+  margin-top: 30px;;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 50px; padding-right: 50px;
+}
+
+
+.logos-pre-footer{
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+
+.back-contactanos{
+  background-color: #E5EAEE;
+}
+
+
+#footer{
+  background-color: #126DBC;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+
+.mb-5porciento{
+  margin-bottom: 5% !important;
+}
+
+.notice-title
+{
+  display: flex;
+  font-size: 1.8em;
+  
+  line-height: 1.8rem;
+}
+/************ Notice Date ***********/
+.notice-date
+{
+  float: left; 
+  position: relative; 
+  /*display: flex;*/
+  overflow: hidden;
+  display: grid; 
+  grid-auto-flow: column;
+  grid-template-columns: 50px 40px;
+  grid-template-rows: 20px 16px;
+}
+
+.notice-day
+{
+  grid-column: 1;
+  grid-row: 1 / 3;
+  font-size: 2.3rem;
+}
+
+.notice-month, .notice-year
+{
+  font-size: 0.8rem;
+}
+
+.container-sm
+{
+  max-width: 620px !important
+}
+
+/*************************/
+
+#formulario-rrhh-1 .form-control{
+  background-color: #fff;
+}
+
+#formulario-contacto .form-control{
+  background-color: #fff;
+}
+
+.color-icon{
+  color: #026CC0;
+  font-size: 80px !important;
+}
+
+.title-icon-contact{
+  color: #026CC0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/************ EMPIEZA RESPONSIVE ***************/
+
+
+@media (max-width: 767px) {
+  .informacion{
+    font-size: 1.5rem;
+  }
+  .mb-1_5rem{
+    margin-bottom: 1.5rem;
+  }
+
+  .spacing2{
+    margin-bottom: 2.5rem;
+  }
+  
+}
+
+@media (max-width: 991px) {
+  .text-md-center1{
+    text-align: center;
+  }
+  .justify-center-sm{
+    justify-content: center;
+  }
+  .input-center-sm{
+    display: flex;
+    justify-content: center;
+  }
+  #ingreso-clientes{
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .padding-top-md{
+    padding-top: 20px;
+  }
+  .input-1550{
+    width: 60% !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .input-center-sm{
+    display: flex;
+    justify-content: center;
+  }
+  .padding-top-sm{
+    padding-top: 20px;
+  }
+
+  .notice-title
+  {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .notice-date{
+    margin-left: 14%;
+  }
+
+  .imagen-sm{
+    text-align: center;
+  }
+
+  .width-sm{
+    max-width: 100%;
+    width: 100%;
+  }
+  .margin-bottom-sm{
+    margin-bottom: 10%;
+  }
+
+  .justify-center-sm{
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 993px) {
+  .informacion{
+    font-size: 1.5rem;
+  }
+  .text-center-menor-que-993{
+    text-align: left;
+  }
+}
+
+@media (max-width: 1550px) {
+  .eventos-boletin{
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .input-center-sm{
+    display: flex;
+    justify-content: center;
+  }
+  .padding-top-md{
+    padding-top: 20px;
+  }
+  .input-1550{
+    width: 100% !important;
+  }
+  .buttons-eventos-boletin{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .buttons-eventos{
+    margin-top: 30px;
+  }
+}
+

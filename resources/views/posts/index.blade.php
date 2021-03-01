@@ -25,8 +25,8 @@
                             alt="Imagen de la Noticia"
                         >
                         <div class="card-body">
-                            <h5 class="card-title">{{ $p->name }}</h5> Fecha de creación: {{ $p->published }} | <b>Estado: @if($p->status == 1) Borrador @else Publicado @endif</b>
-                            <p class="card-text">{!! $p->extract !!}</p>
+                            <h5 class="card-title">{{ $p->name }}</h5> Fecha de creación: {{ $p->published }} | <b>Estado: @if($p->status == 1) Borrador @else Publicado @endif</b> | Usuario: {{ $p->user->name }}
+                            <p class="mt-2 card-text">{!! $p->extract !!}</p>
                             
                             <div class="border-t-2 border-gray-400 pt-2 pb-2 block overflow-hidden">
                                 <span class="text-sm text-gray-700 font-bold ml-3">Categorías: </span>
@@ -47,7 +47,10 @@
                         <div class="card-footer text-muted">
                             <div class="overflow-hidden pt-2">
                                 <a href="{{ route('post.show', $p) }}" class="btn btn-primary">Ver Noticia</a>
-                                <a href="{{ route('post.edit', $p) }}"  class="btn btn-warning">Editar Noticia</a>
+                                @can('author', $p)
+                                <a href="{{ route('post.edit', $p) }}"  class="btn btn-warning">Editar Noticia</a>    
+                                @endcan
+                                
                             </div>
                         </div>
                     </div>
