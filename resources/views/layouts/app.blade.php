@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-colorpicker.min.css') }}">
+
+
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
         
         {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
@@ -45,7 +49,9 @@
 
         @stack('modals')
 
-        @livewireScripts
+        
+
+
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
         {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
@@ -54,13 +60,16 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/toastr.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script>
+        
+        @include('sweet::alert')
+        <script src="http://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"> </script>
+        
+        @livewireScripts
         
 
-        @include('sweet::alert')
-
-        <script src="http://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"> </script>
         <script>
-
+          
             CKEDITOR.replace( 'body', {
                 filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
                 filebrowserUploadMethod: 'form'

@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 use Spatie\Permission\Models\Role;
@@ -76,7 +76,11 @@ class UsersTable extends Component
 
     public function update()
     {
-
+        $user = User::find($this->user_id);
+        
+        if (! Gate::allows('update-user', $this->user_id)) {
+            abort(403);
+        }
         /* 
             para registrar los roles hacer 
             $user->roles()->sync($request->roles);
@@ -89,8 +93,6 @@ class UsersTable extends Component
             'dni'   => 'nullable'
         ]);
 
-        $user = User::find($this->user_id);
-        
         $user->update([
             'name'  => $this->name,
             'email' => $this->email,
@@ -111,6 +113,10 @@ class UsersTable extends Component
 
     public function destroy($id)
     {
+        if (Gate::denies('isAdmin')) 
+        {
+            abort(403);
+        }
         User::destroy($id);
     }
 
@@ -124,7 +130,9 @@ class UsersTable extends Component
 
     public function edit($id)
     {
-        
+        if (! Gate::allows('update-user', $id)) {
+            abort(403);
+        }
       
         $user = User::find($id);
         $this->user_id = $user->id;

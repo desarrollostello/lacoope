@@ -18,7 +18,7 @@ class TagsTable extends Component
 
     public $view = 'create';
 
-    public $name, $tag_id;
+    public $name, $color, $tag_id;
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -26,6 +26,13 @@ class TagsTable extends Component
         'order' =>  ['except' => null],
         'perPage'
     ];
+
+    protected $listeners = ['changeColor'];
+
+    public function changeColor($color)
+    {
+        $this->color = $color;
+    }
 
     public $field = null;
     public $order = null;
@@ -74,10 +81,12 @@ class TagsTable extends Component
     public function store()
     {
         $this->validate([
-            'name'  => 'required'
+            'name'  => 'required',
+            'color' => 'nullable'
         ]);
         $tag = Tag::create([
             'name'  => $this->name,
+            'color' => $this->color,
             'slug'  => Str::random(5) . '-' . Str::slug($this->name)
         ]);
 
@@ -87,13 +96,15 @@ class TagsTable extends Component
     public function update()
     {
         $this->validate([
-            'name'  => 'required'
+            'name'  => 'required',
+            'color' => 'nullable'
         ]);
 
         $tag = Tag::find($this->tag_id);
 
         $tag->update([
             'name'  => $this->name,
+            'color' => $this->color,
             'slug'  => Str::random(5) . '-' . Str::slug($this->name)
         ]);
 
@@ -116,6 +127,7 @@ class TagsTable extends Component
     public function default()
     {
         $this->name = '';
+        $this->color = '';
         $this->view = 'create';
     }
 
@@ -123,9 +135,10 @@ class TagsTable extends Component
     {
         $tag = Tag::find($id);
         $this->tag_id = $tag->id;
-        $this->name = $tag->name;
+        $this->name   = $tag->name;
+        $this->color  = $tag->color;
 
-        $this->view = 'edit';
+        $this->view   = 'edit';
     }
 
 }

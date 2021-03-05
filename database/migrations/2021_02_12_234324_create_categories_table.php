@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
 
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('color');
+            $table->string('color')->nullable()->defalut('#222222');
             $table->timestamps();
         });
     }

@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-footer text-muted">
                             <div class="overflow-hidden pt-2">
-                                <a href="{{ route('post.show', $p) }}" class="btn btn-primary">Ver Noticia</a>
+                                <a href="{{ route('post.ver', $p) }}" class="btn btn-primary">Ver Noticia</a>
                                 @can('author', $p)
                                 <a href="{{ route('post.edit', $p) }}"  class="btn btn-warning">Editar Noticia</a>    
                                 @endcan

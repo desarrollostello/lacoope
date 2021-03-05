@@ -70,6 +70,7 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
+   
     // relación uno a muchos
     public function posts()
     {

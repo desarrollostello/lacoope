@@ -8,6 +8,10 @@
                 <th scope="col" class="text-center cursor-pointer px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" wire:click="sortBy('name')">
                     Nombre
                 </th>
+
+                <th scope="col" class="text-center cursor-pointer px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Color
+                </th>
             
                 <th scope="col" class="relative px-6 py-3">
                     
@@ -25,6 +29,12 @@
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
                             {{ $cat->name }}
+                        </div>
+                    </td>
+
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+                        <div class="text-center text-sm font-medium text-gray-900" style="background-color: {{ $cat->color }}">
+                            {{ $cat->color }}
                         </div>
                     </td>
                 

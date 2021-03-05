@@ -26,8 +26,9 @@
 
                     <div class="mt-5 mb-5">
                         <h4 class="font-bold text-gray-700 display-inline" style="display: inline;">Categorías: </h4>
+                        
                         @foreach ($post->categories as $category)
-                            <a href="{{ route('posts.category', $category) }}" class="px-3 h-6 text-white bg-{{ $category->color}}-600  rounded-full">{{ $category->name }}</a>
+                            <a href="{{ route('posts.category', $category) }}" style="background-color: {{ $category->color }}" class="px-3 h-6 text-white rounded-full">{{ $category->name }}</a>
                         @endforeach
                     </div>
 
