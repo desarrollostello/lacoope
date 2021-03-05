@@ -21,7 +21,7 @@
                                     {{ Storage::url('montania.jpg') }}
                                 @endif
                                 " 
-                            class="card-img-top w-full h-80"
+                            class="card-img-top w-full h-auto"
                             alt="Imagen de la Noticia"
                         >
                         <div class="card-body">

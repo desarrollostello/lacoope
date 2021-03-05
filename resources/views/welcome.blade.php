@@ -79,22 +79,22 @@
 							<div class="collapse navbar-collapse" id="navbarNav">
 								<ul class="navbar-nav text-center">
 									<li class="nav-item active">
-										<a class="nav-link" href="index.php">INICIO<span class="sr-only">(current)</span></a>
+										<a class="nav-link" href="{{ route('home') }}">INICIO<span class="sr-only">(current)</span></a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('institucional') }}">INSTITUCIONAL</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="servicios.php">SERVICIOS</a>
+										<a class="nav-link" href="{{ route('servicios') }}">SERVICIOS</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="novedades.php">NOVEDADES</a>
+										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="rrhh.php">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="contacto.php">CONTACTO</a>
+										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
 									</li>
 									<!--
 									<li class="nav-item">

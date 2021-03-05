@@ -81,7 +81,7 @@
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('home') }}">INICIO<span class="sr-only">(current)</span></a>
 									</li>
-									<li class="nav-item active">
+									<li class="nav-item">
 										<a class="nav-link" href="{{ route('institucional') }}">INSTITUCIONAL</a>
 									</li>
 									<li class="nav-item">
@@ -90,7 +90,7 @@
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
-									<li class="nav-item">
+									<li class="nav-item active">
 										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
@@ -112,103 +112,65 @@
 			</div>
         </div>
         <!-- fin de menu -->
-
-
-
-
-
-
-        <div class="container-fluid p-0">
+        
+        <div class="container-fluid">
             <div id="imagen-ppal" class="mb-5">
-				<img src="{{ asset('front/img/institucional-header-img.png') }} " class="imag-responsive" alt="Imagen Institucional" />
+            <img src="{{ asset('front/img/rrhh.png') }} " class="imag-responsive" alt="Imagen Recursos Humanos" />
             </div>
         </div>
 
         <div class="container">
             <div class="row d-flex">
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div id="title-institucional" class="azul mb-4"><h3>Quienes somos / <span class="negrita">Historia</span></h3></div>
-                    <div id="texto-institucional">
-                        <span class="negrita text-color">El 23 de febrero de 1947 nació la Cooperativa Agrícola, Ganadera e Industrial de Patagones y Viedma, integrada por varios productores de ambas márgenes del río Negro y gente del instituto de colonización de tierras fiscales.<br /><br /></span>
-                        <span class="text-color">
-                        Iniciada la Asamblea se elige por unaminidad de votos a las autoridades que la coordinarían. El mensaje era claro y contundente: “Los asociados no se agrupan con la finalidad de realizar una buena operación financiera, sino de beneficiarse con la eliminación de intermediarios convirtiéndose en distribuidores de sus propias necesidades de crédito. Para lograrlo no es necesario empezar con grandes capitales ni complejos estatutos, pero si es completamente imprescindible el amor de los primeros asociados por la empresa y su enérgica voluntad de llevarla a buen termino…”.<br /><br />
-                        Durante estos años de trabajo incansable, ha sido necesario adaptarse a los cambios manifestados por nuestra sociedad, enfrentando nuevos desafíos y detectando oportunidades. Esa capacidad de nuestros integrantes mantuvo, sin embargo la férrea misión de crecer junto a los socios, los empleados y la sociedad.<br /><br />
-                        Fueron y son ellos quienes, día a día, hacen de esta institución algo grande, fomentando el trabajo, el crecimiento y el bienestar de nuestra población.
-                        </span>
-                    </div>
+                        <div id="title-institucional" class="azul mb-4"><h3><span class="negrita">¿Te gustaría trabajar en la Cooperativa?</span></h3></div>
+                        <div id="texto-institucional">
+                                <span class="text-color">
+                                    <div id="title-institucional" class="mb-4"><h5>No dejes pasar esta oportunidad<br /><br />Nuestra Cooperativa está seleccionando personal.<br />
+                                        Envianos tu solicitud, completando el siguiente formulario y adjuntando tu CV.</h5></div>
+                                </span>
+                            
+                        </div>
+                        <div id="formulario-rrhh" class="mt-6">
+                            <span class="negrita">* Todos los datos son requeridos</span>
+
+                            <div class="row align-items-center mt-5">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <div id="formulario-rrhh-1">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="nombre" class="bmd-label-floating">NOMBRE</label>
+                                                <input type="text" class="form-control" id="nombre" name="nombre">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="bmd-label-floating">EMAIL</label>
+                                                <input type="email" class="form-control" id="email" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telefono" class="bmd-label-floating">TELÉFONO</label>
+                                                <input type="text" class="form-control" id="telefono" name="telefono">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="telefono" class="bmd-label-floating">Añade tu CV</label>
+                                                <input type="file" class="form-control-file" id="cv" name="cv">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-raised botones">ENVIAR</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 mt-6">
-                    <img src="{{ asset('front/img/imagen-institucional.png') }}" alt="Imagen Institucional" width="100%">
-                </div>
-            </div>
-		</div>
-		
-
-		<div class="container-fluid blue mt-5 mb-5 pb-5">
-    		<div class="container pt-5" style="max-width: 1300px">
-				<div id="title-hitos" class="d-flex text-light mb-5">HITOS DE NUESTRA HISTORIA</div>
-				<div id="nuestra-historia" class="row d-flex align-items-stretch">
-
-					<div class="col-lg-3 col-md-12 col-sm-12 historia historia-1947">
-						<div class="top d-flex align-items-center">
-							<div class="redondel back-celeste"></div>
-							<div class="line"><hr></div>
-						</div>
-						
-						<div class="historia-number celeste text-md-center1">1947</div>
-						<div class="historia-title text-light negrita text-md-center1">NACIMIENTO</div>
-						<div class="historia-text text-light text-md-center1">El 23 de Febrero iniciamos el desafio de construir juntos una empresa común</div>
-					</div>
-					<div class="col-lg-3 col-md-12 col-sm-12 historia historia-1970">
-						<div class="top d-flex align-items-center">
-							<div class="redondel back-celeste"></div>
-							<div class="line"><hr></div>
-						</div>
-						<div class="historia-number celeste text-md-center1">1970</div>
-						<div class="historia-title text-light negrita text-md-center1">NUESTRO SUPERMERCADO</div>
-						<div class="historia-text text-light text-md-center1">Inauguramos nuestro primer supermercado en la ciudad e Patagones</div>
-					</div>
-					<div class="col-lg-3 col-md-12 col-sm-12 historia historia-1998">
-						<div class="top d-flex align-items-center">
-							<div class="redondel back-celeste"></div>
-							<div class="line"><hr></div>
-						</div>
-						<div class="historia-number celeste text-md-center1">1998</div>
-						<div class="historia-title text-light negrita text-md-center1">NACE UNICOOP</div>
-						<div class="historia-text text-light text-md-center1">Creamos y lanzamos la marca que identifica a nuestros supermercados</div>
-					</div>
-					<div class="col-lg-3 col-md-12 col-sm-12 historia historia-2017">
-						<div class="top d-flex align-items-center">
-							<div class="redondel back-celeste"></div>
-							<div class="line"><hr></div>
-						</div>
-						<div class="historia-number celeste text-md-center1">2017</div>
-						<div class="historia-title text-light negrita text-md-center1">NACE UNICOOP</div>
-						<div class="historia-text text-light text-md-center1">Ampliando y refuncionalizando todos nuestros supermercados e inauguramos nuevas oficias para una mejor atención</div>
-					</div>
-        		</div>
-    		</div>
-		</div>
-		
-
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div id="title-institucional" class="azul mb-4"><h3>Quienes somos / <span class="negrita">Misiones y Funciones</span></h3></div>
-                    <div id="texto-institucional">
-                        <span class="negrita text-color">La Cooperativa Agrícola, Ganadera e Industrial de Patagones y Viedma promueve, desde 1947, el crecimiento económico y social de sus asociados, clientes, empleados y de la comunidad en general.<br /><br /></span>
-                        <span class="text-color">
-                        Su misión está focalizada en ser una entidad empresaria que represente a toda su composición societaria, con responsabilidad social, trabajo y esfuerzo.<br /><br />
-                        A lo largo de sus casi setenta años de trayectoria, la Cooperativa ha crecido de manera ininterrumpida, contando con el apoyo de la sociedad, generando valor para la región, y realizando acciones de manera transparente y confiable.<br /><br />
-                        La colaboración, la solidaridad, el respeto, la honestidad, la unidad y la lealtad fueron y son los valores que caracterizan a la institución y a sus integrantes.
-                        </span>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 mt-6">
-                    <img src="img/imagen-institucional.png" alt="Imagen Institucional" width="100%">
+                    <img src="{{ asset('front/img/rrhh-cv.png') }} " alt="Imagen Recursos Humanos" width="100%">
                 </div>
             </div>
         </div>
+
         <!-- LOGOS PRE FOOTER -->
 
         <div class="root d-flex logos-pre-footer">

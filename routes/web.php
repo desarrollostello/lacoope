@@ -31,6 +31,24 @@ Route::get('/institucional', function () {
     return view('front/institucional');
 })->name('institucional');
 
+Route::get('/servicios', function () {
+    return view('front/servicios');
+})->name('servicios');
+
+
+Route::get('/novedades', function () {
+    return view('front/novedades');
+})->name('novedades');
+
+
+Route::get('/rrhh', function () {
+    return view('front/rrhh');
+})->name('rrhh');
+
+Route::get('/contacto', function () {
+    return view('front/contacto');
+})->name('contacto');
+
 Route::resource('ckeditor', CkeditorController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
@@ -52,7 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('crearpost', [PostControlle
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
+Route::middleware(['auth:sanctum', 'verified'])->get('/verpost/{post}', [PostController::class, 'show'])->name('post.ver');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->post('guardarpost', [PostController::class, 'store'])->name('post.store');

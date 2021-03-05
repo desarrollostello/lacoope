@@ -43,8 +43,8 @@ class PostRequest extends FormRequest
                     'slug'          => 'nullable',
                     'categories'    => 'required',
                     'tags'          => 'required',
-                    'extract'       => 'required',
-                    'body'          => 'required',
+                    'extract'       => 'nullable',
+                    'body'          => 'nullable',
                     'file'          => 'image'
 
                 ];
@@ -59,8 +59,8 @@ class PostRequest extends FormRequest
                     'status'        => 'required|in:1,2',
                     'categories'    => 'required',
                     'tags'          => 'required',
-                    'extract'       => 'required',
-                    'body'          => 'required',
+                    'extract'       => 'nullable',
+                    'body'          => 'nullable',
                     'file'          => 'image',
                     'slug'          => 'nullable|unique:lineas_creditos,slug,' . $post->id
                 ];
@@ -78,8 +78,6 @@ class PostRequest extends FormRequest
             'tags.required'         => 'Deberá seleccioanr al menos un Tag',
             'name.required'         => 'El campo Titulo es obligatorio',
             'status.required'       => 'El campo Status es obligatorio',
-            'extract.required'      => 'El Campo Extract es obligatorio',
-            'body.required'         => 'El Campo Body es obligatorio',
             'name.unique'           => 'El campo Título ya existe en nuestra base de datos, debe ser único',
         ];
     }

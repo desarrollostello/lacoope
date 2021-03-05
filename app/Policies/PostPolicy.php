@@ -12,6 +12,7 @@ class PostPolicy
 
     public function author(User $user, Post $post)
     {
-        return ($user->id == $post->user_id)?true:false;
+        
+        return (($user->id == $post->user_id) || $user->hasRole('Admin'))?true:false;
     }
 }

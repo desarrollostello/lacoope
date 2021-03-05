@@ -135,7 +135,7 @@ class PostController extends Controller
             $post->categories()->sync($request->categories);
         }
 
-        return redirect()->route('posts.show', $post)->with('info', 'La Noticia se actualizó correctamente');
+        return redirect()->route('post.ver', $post)->with('info', 'La Noticia se actualizó correctamente');
 
     }
 
