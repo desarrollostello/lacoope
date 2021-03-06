@@ -31,7 +31,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('update-user', function (User $user, $user_id) {
-            //dd($user);
             return (($user_id == $user->id) || $user->hasRole('Admin'))?true:false;
         });
         

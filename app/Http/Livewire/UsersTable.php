@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Spatie\Permission\Models\Role;
+
 
 class UsersTable extends Component
 {
@@ -33,6 +35,11 @@ class UsersTable extends Component
 
     public function render()
     {
+        
+        //toast('Your Post as been submited!','success');
+        //alert()->warning('Title','Lorem Lorem Lorem');
+        //Alert::warning('Atención!', 'Ud no puede modificar este usuario!');
+
         $users = User::where('name', 'LIKE', "%$this->search%")
         ->orWhere('email', 'LIKE', "%$this->search%");
         if ($this->field && $this->order) {
@@ -67,6 +74,7 @@ class UsersTable extends Component
         }
         $this->field = $field;
         
+        
     }
 
     public function updatingSearch()
@@ -79,7 +87,7 @@ class UsersTable extends Component
         $user = User::find($this->user_id);
         
         if (! Gate::allows('update-user', $this->user_id)) {
-            abort(403);
+            session()->flash('error', 'Ud no puede actualizar este usuario!!!');
         }
         /* 
             para registrar los roles hacer 
@@ -101,6 +109,7 @@ class UsersTable extends Component
         ]);
 
         $this->default();
+        session()->flash('success', 'Usuario actualizado correctamente!!!');
     }
 
     public function clear()
@@ -113,10 +122,6 @@ class UsersTable extends Component
 
     public function destroy($id)
     {
-        if (Gate::denies('isAdmin')) 
-        {
-            abort(403);
-        }
         User::destroy($id);
     }
 
@@ -131,7 +136,11 @@ class UsersTable extends Component
     public function edit($id)
     {
         if (! Gate::allows('update-user', $id)) {
-            abort(403);
+            session()->flash('error', 'Ud no puede modificar este usuario!!');
+            //toast('Your Post as been submited!','success');
+            //alert()->warning('Title','Lorem Lorem Lorem');
+            //Alert::warning('Atención!', 'Ud no puede modificar este usuario!');
+            return;
         }
       
         $user = User::find($id);

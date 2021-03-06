@@ -82,7 +82,7 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="{{ route('post.show', $post) }}" class="btn btn-primary">Ver Noticia</a>
+                        <a href="{{ route('post.ver', $post) }}" class="btn btn-primary">Ver Noticia</a>
                         @can('author', $post)
                             <a href="{{ route('post.edit', $post) }}"  class="btn btn-warning">Editar</a>
                             <a href="{{ route('post.destroy', $post) }}"  class="btn btn-danger">Borrar</a>

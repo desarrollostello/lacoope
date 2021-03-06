@@ -19,8 +19,8 @@
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.0",
         "nesbot/carbon": "^2.45",
-        "spatie/laravel-permission": "^4.0",
-        "uxweb/sweet-alert": "^2.0"
+        "realrashid/sweet-alert": "^3.2",
+        "spatie/laravel-permission": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

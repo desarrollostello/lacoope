@@ -42,7 +42,11 @@
 		<meta name="theme-color" content="#026CC0">
 	</head>
     <body>
-
+		<div>
+			@foreach ($posts as $post)
+				<h1>{{ $post->name }}</h1>
+			@endforeach
+		</div>
         <!-- Head -->
         <div class="site-header py-1">
 			<div class="container-fluid">
@@ -467,25 +471,53 @@
 			<div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
 			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
 		</div>
-			
+
+		
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+  
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					
+				</div>
+				<div class="modal-body" style="padding: 0rem">
+					@if($popup->file)
+						<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('popups/' . $popup->file) }}" alt="">
+					@else
+						<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
+					@endif
+				</div>
+				{{-- 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				--}}
+			</div>
+		</div>
+	</div>
+
 	
+	
+	
+	@if ($status == 2)
+		<script>
+			$(function() {
+				$('#myModal').modal('show');
+			});
+		</script>
+	@endif
 		<!-- javascripts ---------->
-		
-		
-		
 		<script type="text/javascript">
+
 			$("nav .nav-link").on("click", function(){
 				var menues = $(".nav li"); 
 				menues.removeClass("active");
-				//alert(this);
 				$(this).addClass("active");
 			});
 
-			/*
-			$('.carousel').carousel({
-  				interval: 1000
-			})
-			*/
 			$(document).ready(function() {      
 				$('.carousel').carousel({
 					interval: 2000
@@ -494,4 +526,4 @@
 	</script>
 	</body>
 </html>
-		<!-- END FOOTER -->
+<!-- END FOOTER -->

@@ -8,7 +8,11 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 
 use App\Models\Post;
+use App\Models\Popup;
+use App\Models\User;
 use App\Observers\PostObserver;
+use App\Observers\UserObserver;
+use App\Observers\PopupObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -31,5 +35,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
        Post::observe(PostObserver::class); 
+       User::observe(UserObserver::class);
+       Popup::observe(PopupObserver::class);
     }
 }

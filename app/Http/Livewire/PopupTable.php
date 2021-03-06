@@ -77,4 +77,17 @@ class PopupTable extends Component
     {
         $this->name = '';
     }
+
+    public function changeStatus($id)
+    {
+        $popup = Popup::find($id);
+        $status = (int) $popup->status;
+        if($status == 1)
+        {
+            $popup->status = 2;
+        }else{
+            $popup->status = 1;
+        }
+        $popup->save();
+    }
 }

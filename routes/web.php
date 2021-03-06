@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\InicioController;
+
 use App\Http\Controllers\PopupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -22,11 +25,13 @@ use App\Http\Controllers\CkeditorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [InicioController::class, 'index'])->name('home');
 
+/*
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
+*/
 Route::get('/institucional', function () {
     return view('front/institucional');
 })->name('institucional');
@@ -57,11 +62,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)-
 
 Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('roles');
 
-
-
-
-
-
 //ckeditor upload
 Route::post('posts/image_upload', [PostController::class, 'upload'])->name('upload');
 
@@ -86,9 +86,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/posts2', PostTable::class
 Route::middleware(['auth:sanctum', 'verified'])->get('/category/{category}', [PostController::class, 'category'])->name('posts.category');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
-
-
-
 //Popup
 Route::middleware(['auth:sanctum', 'verified'])->get('/popups2', PopupTable::class)->name('popups2');
 Route::middleware(['auth:sanctum', 'verified'])->get('/popups', [PopupController::class, 'index'])->name('popup.index');
@@ -98,9 +95,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('nuevopopup', [PopupContro
 Route::middleware(['auth:sanctum', 'verified'])->get('editarpopup/{popup}', [PopupController::class, 'edit'])->name('popup.edit');
 Route::middleware(['auth:sanctum', 'verified'])->patch('editarpopup/{popup}', [PopupController::class, 'update'])->name('popup.update');
 Route::middleware(['auth:sanctum', 'verified'])->get('destroypopup/{popup}', [PopupController::class, 'destroy'])->name('popup.destroy');
-
-
-
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('post/nuevo', [PostTable::class, 'create'])->name('posts.create');
 

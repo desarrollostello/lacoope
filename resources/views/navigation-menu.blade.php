@@ -42,6 +42,11 @@
             'route'  => route('popups2'),
             'active' => request()->routeIs('popups2')
         ],
+        [
+            'name'   => 'Inicio',
+            'route'  => route('home'),
+            'active' => request()->routeIs('home')
+        ],
     ];
 @endphp
 

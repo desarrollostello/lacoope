@@ -61,8 +61,8 @@
 <div class="row mb-3">
     <div class="col">
         <div class="image-wrapper">
-            @isset($popup->url)
-                <img id="picture" src="{{ Storage::url($popup->url) }}" alt="">
+            @isset($popup->file)
+                <img id="picture" src="{{ Storage::url('popups/' . $popup->file) }}" alt="">
             @else
                 <img id="picture" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
             @endif

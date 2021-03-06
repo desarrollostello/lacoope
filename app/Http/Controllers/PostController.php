@@ -8,9 +8,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Str;
-
 use Illuminate\Support\Facades\Storage;
-
+use Alert;
 class PostController extends Controller
 {
     public function index()
@@ -70,9 +69,15 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $etiqueta = $post->categories[0]->id;
-        $categoria = Category::where('id', $etiqueta)->first();
-        $similares = $categoria->posts()->where('post_id', '!=', $post->id)->latest('id')->take(4)->get();
+        
+        if ($post->categories->count() > 0)
+        {
+            $cat = $post->categories[0]->id;
+            $categoria = Category::where('id', $cat)->first();
+            $similares = $categoria->posts()->where('post_id', '!=', $post->id)->latest('id')->take(4)->get();
+        }else{
+            $similares = '';
+        }
         
         return view('posts.show', [
             'post'      => $post,
@@ -90,8 +95,7 @@ class PostController extends Controller
     }
 
     public function edit(Post $post)
-    {
-        
+    {   
        $this->authorize('author', $post);   
         $tags = Tag::all();
         $categories = Category::all();

@@ -1,6 +1,28 @@
 <div>
     <div class="py-12">
+        
         <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
+            @if (session()->has('warning'))
+                <div class="alert alert-warning">
+                    <h4>{{ session('warning') }}</h4>
+                </div>
+            @endif
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    <h4>{{ session('success') }}</h4>
+                </div>
+            @endif
+           
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    <h4>{{ session('error') }}</h4>
+                </div>
+            @endif
+            @if (session()->has('info'))
+                <div class="alert alert-info">
+                    <h4>{{ session('info') }}</h4>
+                </div>
+            @endif
             <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
                 <div class="grid grid-cols-12 gap-4">
                     <div class="bg-gray-100 col-span-3">

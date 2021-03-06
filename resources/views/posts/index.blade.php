@@ -31,13 +31,13 @@
                             <div class="border-t-2 border-gray-400 pt-2 pb-2 block overflow-hidden">
                                 <span class="text-sm text-gray-700 font-bold ml-3">Categorías: </span>
                                 @foreach ($p->categories as $category)
-                                    <a href="{{ route('posts.category', $category) }}" class="inline-block px-4 h-6 text-white bg-{{ $category->color}}-600  rounded-full">{{ $category->name }}</a>
+                                    <a href="{{ route('posts.category', $category) }}" style="background-color: {{ $category->color }}" class="inline-block px-4 h-6 text-white rounded-full">{{ $category->name }}</a>
                                 @endforeach
                             </div>
 
                             <div class="pt-3 pb-4 block h-auto overflow-hidden">
                                 @foreach ($p->tags as $tag)
-                                    <a href="{{ route('posts.tag', $tag) }}" class="inline-block float-right px-3 h-6 text-white bg-{{ $tag->color}}-600  rounded-full">{{ $tag->name }}</a>
+                                    <a href="{{ route('posts.tag', $tag) }}" style="background-color: {{ $tag->color }}" class="inline-block float-right px-3 h-6 text-white rounded-full">{{ $tag->name }}</a>
                                 @endforeach
                                 <span class="text-sm text-gray-700 font-bold float-right mr-3">Etiquetas: </span>
                             </div>

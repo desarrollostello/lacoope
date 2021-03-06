@@ -19,7 +19,6 @@ class PopupController extends Controller
             'popups' =>$popups
         ]);
     }
-
     
     public function create()
     {
@@ -30,32 +29,37 @@ class PopupController extends Controller
 
     public function store(PopupRequest $request)
     {
-        $url = "";
-        $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
-        $data['slug'] = Str::slug($request->name);
-
-        if($request->file('file'))
+        try 
         {
-            $value = $request->file('file');
-            $imageName = time() . '-' . $value->getClientOriginalName();
-            $value->move(public_path('storage/popups/'), $imageName);
-            $data['file'] = public_path('storage/popups/') . $imageName;
-        }
-        
-        if (Popup::create($data))
-        {
-            Session::flash('message-success', 'Popup creado satisfactoriamente.');
-        
-        }else{
-            Session::flash('message-danger', 'Error al intentar guardar el Popup');
-        }
+            $data = $request->all();
+            $data['user_id'] = Auth::user()->id;
+            $data['slug'] = Str::slug($request->name);
 
-        return redirect()->route('popups2');
+            
+            if($request->file('file'))
+            {
+                $value = $request->file('file');
+                $filename = $this->getFilename($value);
+                $check    = $this->permittedFile($value->getClientOriginalExtension());
+                if($check)
+                {
+                    if($this->moveFile($value, $filename))
+                    {
+                        $data['file'] = $filename;
+                    }
+                }
+            }
+            Popup::create($data);
+            session()->flash('success', 'Popup creado correctamente!!!');
+        } catch (\Throwable $th) {  
+            session()->flash('error', 'Error al intentar guardar el popup');
+        }
+        return redirect()->route('popups2');//throw $th;
+        
     }
 
     public function show(Popup $popup)
-    {   
+    {
         return view('popups.show', [
             'popup'      => $popup
         ]);
@@ -64,7 +68,6 @@ class PopupController extends Controller
 
     public function edit(Popup $popup)
     {
-        //$popup = Popup::all();
         return view('popups.edit', [
             'popup'  => $popup
         ]);
@@ -72,30 +75,80 @@ class PopupController extends Controller
 
     public function update(PopupRequest $request, Popup $popup)
     {
-        $imagenActual = $popup->url;
-        $popup->update($request->all());
-
-        if ($request->file('file'))
+        try 
         {
-            $url = Storage::put('popups', $request->file('file'));
-
-            if($imagenActual)
+            $data = $request->all();
+            $now = new \DateTime();
+            if ($request->hasfile('file'))
             {
-                Storage::delete($popup->url);
+                $value = $request->file('file');
+                $filename = $this->getFilename($value);
+                $check    = $this->permittedFile($value->getClientOriginalExtension());
+                if($check)
+                {
+                    if($this->moveFile($value, $filename))
+                    {
+                        $data['file'] = $filename;
+                        $this->deleteOldFile($popup->file);
+                    }
+                }
             }
+            if ($data['name'])
+                $data['slug'] = Str::slug($data['name']);
+            $popup->fill($data)->update();
+            session()->flash('success', 'Popup actualizado correctamente!!!');
+        } catch (\Throwable $th) {  
+            session()->flash('error', 'Error al intentar actualizar el popup');
         }
-        return redirect()->route('popup.show', $popup)->with('info', 'El Popup se actualizó correctamente');
+        return redirect()->route('popups2');//throw $th;
+    }
 
+    private function getFilename($value)
+    {
+        $now = new \DateTime();
+        $fullName = $value->getClientOriginalName();
+        $extension = $value->getClientOriginalExtension();
+        $onlyName = explode('.'.$extension,$fullName);
+    
+        $filename = rand(1,10000) . "-"  . Str::slug($now->format('d-m-Y H:i:s')) . "-" . $onlyName[0]  . "." . $extension;
+        return $filename;
+    }
+
+    private function permittedFile($extension)
+    {
+        $allowedfileExtension=['jpeg','JPEG', 'jpg','png','JPG','PNG','gif', 'GIF'];
+        return $check=in_array($extension,$allowedfileExtension);
+    }
+
+
+    private function moveFile($value, $file)
+    {
+        return ($value->move('storage/popups/', $file))?true:false;
+    }
+
+    private function deleteOldFile($actual)
+    { 
+        if(file_exists('storage/popups/' . $actual))
+        {
+            return (unlink('storage/popups/' . $actual))?true: false;
+        }
+        return true;
     }
 
     public function destroy(Popup $popup)
     {
-        $imagenActual = $popup->url;
+        $imagenActual = $popup->file;
         $borrado = $popup->delete();
         if($imagenActual && $borrado)
         {
-            Storage::delete($popup->url);
+            Storage::delete('popups/'. $popup->file);
         }
-        return redirect()->route('popups2')->with('info', 'El Popup se ha eliminado correctamente');
+        if($borrado)
+        {
+            session()->flash('success', 'Popup borrado correctamente!!!');
+        }else{
+            session()->flash('error', 'Error al intentar borrar el popup !!!');
+        }
+        return redirect()->route('popups2');
     }
 }

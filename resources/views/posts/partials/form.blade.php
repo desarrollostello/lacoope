@@ -100,3 +100,14 @@
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>
+@section('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    CKEDITOR.replace( 'body', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+});
+
+</script>
+@endsection 

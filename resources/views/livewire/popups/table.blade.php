@@ -70,7 +70,7 @@
                     
 
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                        <div class="text-center text-sm font-medium text-gray-900">
+                        <div class="text-center text-sm font-medium text-gray-900" wire:click="changeStatus({{ $popup->id }})">
                             {{ ($popup->status == 1) ? 'Borrador' : 'Publicado' }}
                             
                         </div>
