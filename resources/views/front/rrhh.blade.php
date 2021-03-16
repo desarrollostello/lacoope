@@ -18,7 +18,8 @@
 		<link href="{{ asset('css/customFront.css') }}" rel="stylesheet">
 
 		
-		<script src="{{ asset('js/popper.min.js') }}" type="javascript"></script>	
+		<script src="{{ asset('js/popper.min.js') }}" type="javascript"></script>
+		<script src="{{ asset('js/ajax1.js') }}" type="javascript"></script>	
 		<script src="{{ asset('js/jquery-3.5.1.min.js') }}" type="javascript"></script>
 		
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -136,27 +137,29 @@
                             <div class="row align-items-center mt-5">
                                 <div class="col-lg-12 col-md-12 col-xs-12">
                                     <div id="formulario-rrhh-1">
-                                        <form>
+										{!! Form::open(['route' => 'rrhh.store', 'autocomplete' => 'off', 'files' => true, 'enctype' => 'multipart/form-data']) !!}
+										
+											<input type="hidden" value="true" name="emailSent" id="emailSent">
                                             <div class="form-group">
                                                 <label for="nombre" class="bmd-label-floating">NOMBRE</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre">
+                                                <input type="text" class="form-control" id="nombre" name="nombre" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="bmd-label-floating">EMAIL</label>
-                                                <input type="email" class="form-control" id="email" name="email">
+                                                <input type="email" class="form-control" id="email" name="email" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="telefono" class="bmd-label-floating">TELÉFONO</label>
-                                                <input type="text" class="form-control" id="telefono" name="telefono">
+                                                <input type="text" class="form-control" id="telefono" name="telefono" required>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="telefono" class="bmd-label-floating">Añade tu CV</label>
-                                                <input type="file" class="form-control-file" id="cv" name="cv">
+                                                <label for="file" class="bmd-label-floating">Añade tu CV</label>
+                                                <input type="file" class="form-control-file" id="file" name="file" required>
                                             </div>
-
-                                            <button type="submit" class="btn btn-primary btn-raised botones">ENVIAR</button>
-                                        </form>
+											{!! Form::submit('Enviar', ['class' => 'btn btn-primary btn-raised botones']) !!}
+                                            <!-- <button type="submit" class="btn btn-primary btn-raised botones">ENVIAR</button> -->
+										{!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>

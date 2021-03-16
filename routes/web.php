@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\FrontrrhhController;
 
 use App\Http\Controllers\PopupController;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\UsersTable;
 use App\Http\Livewire\TagsTable;
 use App\Http\Livewire\CategoriesTable;
+use App\Http\Livewire\SubscripcionTable;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\PostTable;
 use App\Http\Livewire\PopupTable;
@@ -26,7 +28,9 @@ use App\Http\Controllers\CkeditorController;
 |
 */
 Route::get('/', [InicioController::class, 'index'])->name('home');
-
+Route::get('/novedades', [InicioController::class, 'novedades'])->name('novedades');
+Route::get('/rrhh', [FrontrrhhController::class, 'indexFront'])->name('rrhh');
+Route::post('rrhh-email', [FrontrrhhController::class, 'store'])->name('rrhh.store');
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -40,16 +44,17 @@ Route::get('/servicios', function () {
     return view('front/servicios');
 })->name('servicios');
 
-
+/*
 Route::get('/novedades', function () {
     return view('front/novedades');
 })->name('novedades');
+*/
 
-
+/*
 Route::get('/rrhh', function () {
     return view('front/rrhh');
 })->name('rrhh');
-
+*/
 Route::get('/contacto', function () {
     return view('front/contacto');
 })->name('contacto');
@@ -59,6 +64,7 @@ Route::resource('ckeditor', CkeditorController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', UsersTable::class)->name('users');
 Route::middleware(['auth:sanctum', 'verified'])->get('/categories', CategoriesTable::class)->name('categories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/tags', TagsTable::class)->name('tags');
+Route::middleware(['auth:sanctum', 'verified'])->get('/subscripciones', SubscripcionTable::class)->name('subscripciones');
 
 Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('roles');
 
@@ -67,12 +73,8 @@ Route::post('posts/image_upload', [PostController::class, 'upload'])->name('uplo
 
 // Posts
 Route::middleware(['auth:sanctum', 'verified'])->get('crearpost', [PostController::class, 'create'])->name('post.addpost');
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/verpost/{post}', [PostController::class, 'show'])->name('post.ver');
-
-
 Route::middleware(['auth:sanctum', 'verified'])->post('guardarpost', [PostController::class, 'store'])->name('post.store');
 Route::middleware(['auth:sanctum', 'verified'])->get('editar/{post}', [PostController::class, 'edit'])->name('post.edit');
 Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{post}', [PostController::class, 'update'])->name('post.update');

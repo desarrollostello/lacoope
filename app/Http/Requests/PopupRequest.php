@@ -55,8 +55,8 @@ class PopupRequest extends FormRequest
             {
                 return 
                 [
-                    'start_date'    => 'required|after_or_equal:' . $todayDate,
-                    'end_date'      => 'required|after_or_equal:' . $todayDate,
+                    'start_date'    => 'required',
+                    'end_date'      => 'required',
                     'name'          => 'required|min:4|max:200',
                     'status'        => 'required|in:1,2',
                     'title'         => 'nullable',

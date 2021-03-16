@@ -42,11 +42,7 @@
 		<meta name="theme-color" content="#026CC0">
 	</head>
     <body>
-		<div>
-			@foreach ($posts as $post)
-				<h1>{{ $post->name }}</h1>
-			@endforeach
-		</div>
+		
         <!-- Head -->
         <div class="site-header py-1">
 			<div class="container-fluid">
@@ -262,6 +258,12 @@
 
 		<!-- NOTICAS -->
 
+		
+			{{ setlocale(LC_ALL, 'es_ES') }}
+			{{ \Carbon\Carbon::setLocale('es') }}
+		
+			{{ $posts[0]->image }}
+
 		<div class="container-fluid mb-5">
 			<div class="mycontainer container">
 				<div class="row d-flex align-items-center">
@@ -271,17 +273,22 @@
 							<!--hora y titulo -->
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="notice-date centrar-flex azul">
-									<div class="notice-day" azul>02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year" azul>2020</div>
+									<div class="notice-day azul">{{ \Carbon\Carbon::parse($posts[0]->published)->format('d') }}</div>
+									<div class="notice-month azul">{{ \Carbon\Carbon::parse($posts[0]->published)->formatLocalized('%B') }}</div>
+									<div class="notice-year azul">{{ \Carbon\Carbon::parse($posts[0]->published)->format('Y') }}</div>
 								</div>
 								<br>
 								<br>
-								<div class="notice-title azul">En Unicoop nos cuidamos entre todos</div>
+								<div class="notice-title azul">{{ $posts[0]->name }}</div>
 							</div>
 							<!-- imagen-->
 							<div class="col-lg-6 col-md-6 col-sm-12 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen1.png') }}" class="img-fluid padding-top-sm" alt="">
+								@if ($posts[0]->image)
+									<img src="{{ Storage::url($posts[0]->image->url) }}" class="img-fluid padding-top-sm" alt="">
+                                @else
+									<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+                                @endif
+								
 							</div>
 						</div>
 					</div>
@@ -293,17 +300,21 @@
 							<!--hora y titulo -->
 							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-1 order-1">
 								<div class="notice-date centrar-flex azul">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
+									<div class="notice-day azul">{{ \Carbon\Carbon::parse($posts[1]->published)->format('d') }}</div>
+									<div class="notice-month azul">{{ \Carbon\Carbon::parse($posts[1]->published)->formatLocalized('%B') }}</div>
+									<div class="notice-year azul">{{ \Carbon\Carbon::parse($posts[1]->published)->format('Y') }}</div>
 								</div>
 								<br>
 								<br>
-								<div class="notice-title azul">ACA Salud informa</div>
+								<div class="notice-title azul">{{ $posts[1]->name }}</div>
 							</div>
 							<!-- imagen-->
 							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-2 order-2 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen2.png') }}" class="img-fluid padding-top-sm" alt="">
+								@if ($posts[1]->image)
+									<img src="{{ Storage::url($posts[1]->image->url) }}" class="img-fluid padding-top-sm" alt="">
+                                @else
+									<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+                                @endif
 							</div>
 						</div>
 
@@ -316,18 +327,22 @@
 						<div class="row d-flex align-items-center width-sm">
 							<!-- imagen-->
 							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-2 order-lg-1 order-2  imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen3.png') }}" class="img-fluid padding-top-sm" alt="">
+								@if ($posts[2]->image)
+									<img src="{{ Storage::url($posts[2]->image->url) }}" class="img-fluid padding-top-sm" alt="">
+                                @else
+									<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+                                @endif
 							</div>
 							<!--hora y titulo -->
 							<div class="col-lg-6 col-md-6 col-sm-12  order-sm-1 order-md-1 order-lg-2 order-1">
 								<div class="notice-date centrar-flex">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
+									<div class="notice-day azul">{{ \Carbon\Carbon::parse($posts[2]->published)->format('d') }}</div>
+									<div class="notice-month azul">{{ \Carbon\Carbon::parse($posts[2]->published)->formatLocalized('%B') }}</div>
+									<div class="notice-year azul">{{ \Carbon\Carbon::parse($posts[2]->published)->format('Y') }}</div>
 								</div>
 								<br>
 								<br>
-								<div class="notice-title azul">En Unicoop nos cuidamos entre todos</div>
+								<div class="notice-title azul">{{ $posts[2]->name }}</div>
 							</div>
 							
 						</div>
@@ -339,18 +354,22 @@
 						<div class="row d-flex align-items-center width-sm">
 							<!-- imagen-->
 							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-1 order-2 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen4.png') }}" class="img-fluid padding-top-sm" alt="">
+								@if ($posts[3]->image)
+									<img src="{{ Storage::url($posts[3]->image->url) }}" class="img-fluid padding-top-sm" alt="">
+                                @else
+									<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+                                @endif
 							</div>
 							<!--hora y titulo -->
 							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-2 order-1">
 								<div class="notice-date centrar-flex azul">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
+									<div class="notice-day azul">{{ \Carbon\Carbon::parse($posts[3]->published)->format('d') }}</div>
+									<div class="notice-month azul">{{ \Carbon\Carbon::parse($posts[3]->published)->formatLocalized('%B') }}</div>
+									<div class="notice-year azul">{{ \Carbon\Carbon::parse($posts[3]->published)->format('Y') }}</div>
 								</div>
 								<br>
 								<br>
-								<div class="notice-title azul">ACA Salud informa</div>
+								<div class="notice-title azul">{{ $posts[3]->name }}</div>
 							</div>
 							
 						</div>
@@ -380,8 +399,12 @@
 						<div class="col-lg-8 imagen-md eventos-boletin">
 							<h2 class="title-eventos-boletin title-boletin">Boletín.</h2>
 							<p>Suscribite a nuestro boletín de novedades y eventos y recibirás todos los domingos un resúmen de la información más destacada en tu email.</p>
-							<span class="input-center-sm"><input style="width: 50%" type="text" class="input-1550 form-control" id="subscribirse" placeholder="E-mail"></span><br/>
-							<button type="button" class="btn btn-link buttons-eventos-boletin button-boletin">SUBSCRIBIRSE</button>
+							<span class="input-center-sm">
+							@livewire('subscripcion-table', ['desde' => 'front'])
+							
+							{{--<input style="width: 50%" type="text" class="input-1550 form-control" id="subscribirse" placeholder="E-mail"></span><br/>
+							<button type="button" class="btn btn-link buttons-eventos-boletin button-boletin">SUBSCRIBIRSE</button>--}}
+							
 						</div>
 						<div class="col-lg-4 imagen-md padding-top-md eventos-boletin"><img src="{{ asset('front/img/boletin.png') }}" alt="" class="image-fluid"></div>
 					</div>
@@ -472,46 +495,46 @@
 			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
 		</div>
 
-		
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-  
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					
-				</div>
-				<div class="modal-body" style="padding: 0rem">
-					@if($popup->file)
-						<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('popups/' . $popup->file) }}" alt="">
-					@else
-						<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
-					@endif
-				</div>
-				{{-- 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				--}}
-			</div>
-		</div>
-	</div>
+		@livewireScripts
 
+
+		@if (isset($popup))
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+		
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							
+						</div>
+						<div class="modal-body" style="padding: 0rem">
+							@if($popup->file)
+								<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('popups/' . $popup->file) }}" alt="">
+							@else
+								<img style="max-width: 800px; margin: 0 auto"  class="w-full object-cover object-center" src="{{ Storage::url('sin-imagen.jpg') }}" alt="">
+							@endif
+						</div>
+						{{-- 
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+						--}}
+					</div>
+				</div>
+			</div>
+		@endif
 	
-	
-	
-	@if ($status == 2)
-		<script>
-			$(function() {
-				$('#myModal').modal('show');
-			});
-		</script>
-	@endif
+		@if ($status == 2)
+			<script>
+				$(function() {
+					$('#myModal').modal('show');
+				});
+			</script>
+		@endif
 		<!-- javascripts ---------->
 		<script type="text/javascript">
-
 			$("nav .nav-link").on("click", function(){
 				var menues = $(".nav li"); 
 				menues.removeClass("active");
@@ -523,7 +546,7 @@
 					interval: 2000
 				});
 		 	});
-	</script>
+		</script>
 	</body>
 </html>
 <!-- END FOOTER -->

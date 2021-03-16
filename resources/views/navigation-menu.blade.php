@@ -11,6 +11,11 @@
             'active' => request()->routeIs('users')
         ],
         [
+            'name'   => 'Subscripciones',
+            'route'  => route('subscripciones'),
+            'active' => request()->routeIs('subscripciones')
+        ],
+        [
             'name'   => 'Categorías',
             'route'  => route('categories'),
             'active' => request()->routeIs('categories')

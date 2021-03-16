@@ -46,7 +46,6 @@ class PostRequest extends FormRequest
                     'extract'       => 'nullable',
                     'body'          => 'nullable',
                     'file'          => 'image'
-
                 ];
             }
             case 'PUT':

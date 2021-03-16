@@ -118,7 +118,11 @@
             <div id="imagen-ppal" class="mb-5">
                 <img src="{{ asset('front/img/novedades-front.png') }}" class="w-100 imag-responsive" alt="Imagen Institucional" />
             </div>
-        </div>
+		</div>
+		
+		{{ setlocale(LC_ALL, 'es_ES') }}
+		{{ \Carbon\Carbon::setLocale('es') }}
+
         
         <div class="container-fluid mb-5">
 			<div class="mycontainer container">

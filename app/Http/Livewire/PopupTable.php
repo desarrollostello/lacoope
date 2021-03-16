@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
+use Exception;
 use App\Models\Popup;
 
 class PopupTable extends Component
@@ -80,14 +81,27 @@ class PopupTable extends Component
 
     public function changeStatus($id)
     {
-        $popup = Popup::find($id);
-        $status = (int) $popup->status;
-        if($status == 1)
-        {
-            $popup->status = 2;
-        }else{
-            $popup->status = 1;
+        try {
+            $popup = Popup::find($id);
+            $status = (int) $popup->status;
+
+            dd($popup->autorizeChangeStatus($popup));
+            if(!$popup->autorizeChangeStatus($popup))
+            {
+                throw new Exception("Ya existe un popup activo, no puede poner otro para la misma fecha", 1);
+            }
+            
+            if($status == 1)
+            {
+                $popup->status = 2;
+            }else{
+                $popup->status = 1;
+            }
+            $popup->save();
+        } catch (Exception $e) {
+            return false;
+            session()->flash('error', $e->getMessage());
         }
-        $popup->save();
+        
     }
 }
