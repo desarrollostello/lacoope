@@ -15,6 +15,7 @@ use App\Http\Livewire\SubscripcionTable;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\PostTable;
 use App\Http\Livewire\PopupTable;
+use App\Http\Livewire\RrhhTable;
 use App\Http\Controllers\CkeditorController;
 
 /*
@@ -29,7 +30,8 @@ use App\Http\Controllers\CkeditorController;
 */
 Route::get('/', [InicioController::class, 'index'])->name('home');
 Route::get('/novedades', [InicioController::class, 'novedades'])->name('novedades');
-Route::get('/rrhh', [FrontrrhhController::class, 'indexFront'])->name('rrhh');
+Route::get('/paginarrhh', [FrontrrhhController::class, 'indexFront'])->name('paginarrhh');
+Route::middleware(['auth:sanctum', 'verified'])->get('/rrhh', RrhhTable::class)->name('rrhh');
 Route::post('rrhh-email', [FrontrrhhController::class, 'store'])->name('rrhh.store');
 /*
 Route::get('/', function () {

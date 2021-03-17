@@ -17,6 +17,11 @@ class FrontrrhhController extends Controller
         return view('front.rrhh');
     }
 
+    public function create()
+    {
+        return view('rrhhs.create');
+    }
+
     
 
     public function store(FrontRrhhRequest $request)
@@ -73,6 +78,41 @@ class FrontrrhhController extends Controller
         
         
     }
+
+    public function show(Rrhh $rrhh)
+    {
+        return view('posts.show', [
+            'rrhh'      => $rrhh
+        ]);
+    }
+
+    public function edit(Rrhh $rrhh)
+    {   
+       //$this->authorize('author', $post);   
+        return view('posts.edit', [
+            'rrhh'  => $rrhh
+        ]);
+    }
+
+    public function update(FrontRrhhRequest $request, Rrhh $rrhh)
+    {
+        //$this->authorize('author', $post);
+        $rrhh->update($request->all());
+
+        if ($request->file('file'))
+        {
+            $url = Storage::put('curriculum', $request->file('file'));
+        }
+        return redirect()->route('rrhh.ver', $rrhh)->with('info', 'El Curriculum se actualizó correctamente');
+
+    }
+
+    public function destroy(Rrhh $rrhh)
+    {
+       // $this->authorize('author', $rrhh);
+        $rrhh->delete();
+    }
+
 
     private function permittedFile($extension)
     {

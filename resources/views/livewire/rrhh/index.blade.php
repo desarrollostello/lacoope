@@ -11,7 +11,7 @@
                     <div class="grid grid-cols-12 gap-4">
                         <div class="bg-gray-100 col-span-4">
                             <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
-                                @include("livewire.category.$view")
+                                @include("livewire.rrhh.$view")
                             </div>
                             
                         </div>

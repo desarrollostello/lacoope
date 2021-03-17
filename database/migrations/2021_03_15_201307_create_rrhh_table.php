@@ -13,7 +13,7 @@ class CreateRrhhTable extends Migration
      */
     public function up()
     {
-        Schema::create('rrhh', function (Blueprint $table) {
+        Schema::create('rrhhs', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('telefono');
@@ -31,6 +31,6 @@ class CreateRrhhTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rrhh');
+        Schema::dropIfExists('rrhhs');
     }
 }

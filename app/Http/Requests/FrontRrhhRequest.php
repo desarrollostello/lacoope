@@ -23,6 +23,9 @@ class FrontRrhhRequest extends FormRequest
      */
     public function rules()
     {
+
+        $rrhh = $this->route()->parameter('rrhh');
+
         switch ($this->method()) 
         {
             case 'GET':
@@ -35,10 +38,23 @@ class FrontRrhhRequest extends FormRequest
                 return [
                     'nombre'      => 'required',
                     'telefono'    => 'required',
-                    'email'        => 'required|email',
-                    'file'        => 'image'
+                    'email'       => 'required|email',
+                    'file'        => 'required|file',
+                    'slug'        => 'nullable'
                 ];
             }
+            case 'PUT':
+                case 'PATCH': 
+                {
+                    return 
+                    [
+                        'nombre'      => 'required',
+                        'telefono'    => 'required',
+                        'email'       => 'required|email',
+                        'file'        => 'file',
+                        'slug'        => 'nullable|unique:rrhh,slug,' . $rrhh->id
+                    ];
+                }
             
             default:
                 break;

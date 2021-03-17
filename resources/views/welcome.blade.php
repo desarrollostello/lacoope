@@ -91,7 +91,7 @@
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('paginarrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
