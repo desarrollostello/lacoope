@@ -261,8 +261,6 @@
 		
 			{{ setlocale(LC_ALL, 'es_ES') }}
 			{{ \Carbon\Carbon::setLocale('es') }}
-		
-			{{ $posts[0]->image }}
 
 		<div class="container-fluid mb-5">
 			<div class="mycontainer container">
@@ -439,25 +437,25 @@
 						<div class="col-lg-9 col-md-12 col-xs-12">
 							<h2 class="title-eventos-boletin title-escribenos negrita-600">Escribenos /</h2>
 							<div id="formulario">
-								<form class="needs-validation" novalidate>
+								{!! Form::open(['route' => 'formFront', 'autocomplete' => 'off']) !!}
 									<div class="form-group">
 										<label for="nombre" class="bmd-label-floating">NOMBRE</label>
-										<input type="text" class="form-control" id="nombre" name="nombre">
+										<input type="text" class="form-control" id="nombre" name="nombre" required>
 										<div class="invalid-feedback">Por favor, ingrese un nombre</div>
 									</div>
 									<div class="form-group">
 										<label for="email" class="bmd-label-floating">EMAIL</label>
-										<input type="email" class="form-control" id="email" name="email">
+										<input type="email" class="form-control" id="email" name="email" required>
 										<div class="invalid-feedback">Por favor, ingrese un email</div>
 									</div>
 									<div class="form-group">
 									  <label for="mensaje" class="bmd-label-floating">MENSAJE</label>
-									  <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
+									  <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
 									  <div class="invalid-feedback">Por favor, ingrese un mensaje</div>
 									</div>
 
-									<button type="submit" class="btn btn-primary btn-raised botones">ENVIAR</button>
-								  </form>
+									{!! Form::submit('Enviar', ['class' => 'btn btn-primary btn-raised botones']) !!}
+								{!! Form::close() !!}
 							</div>
 						</div>
 					</div>
@@ -471,19 +469,19 @@
 
 		<div class="root d-flex logos-pre-footer">
 			<div class="col d-flex justify-content-center align-items-center">
-				<a href="www.facebook.com/UnicoopSupermercados" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt=""></a>
+				<a href="www.facebook.com/UnicoopSupermercados" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
 			</div>
 			<div class="col d-flex justify-content-center align-items-center">
-				<a href="www.coovaeco.com" target="_blank"><img src="{{ asset('front/img/covaeco.png') }}" class="img-fluid" alt=""></a>
+				<a href="www.coovaeco.com" target="_blank"><img src="{{ asset('front/img/covaeco.png') }}" class="img-fluid" alt="Logo de covaeco"></a>
 			</div>
 			<div class="col  d-flex justify-content-center align-items-center">
-				<a href="www.lasegunda.com.ar" target="_blank"><img src="{{ asset('front/img/lasegunda.png') }}" class="img-fluid" alt=""></a>
+				<a href="www.lasegunda.com.ar" target="_blank"><img src="{{ asset('front/img/lasegunda.png') }}" class="img-fluid" alt="Logo de La Segunda"></a>
 			</div>
 			<div class="col  d-flex justify-content-center align-items-center">
-				<a href="www.fridevi.com.ar" target="_blank"><img src="{{ asset('front/img/fridevi.png') }}" class="img-fluid" alt=""></a>
+				<a href="www.fridevi.com.ar" target="_blank"><img src="{{ asset('front/img/fridevi.png') }}" class="img-fluid" alt="Logo de Fridevi"></a>
 			</div>
 			<div class="col  d-flex justify-content-center align-items-center">
-				<a href="www.acasalud.com.ar" target="_blank"><img src="{{ asset('front/img/aca.png') }}" class="img-fluid" alt=""></a>
+				<a href="www.acasalud.com.ar" target="_blank"><img src="{{ asset('front/img/aca.png') }}" class="img-fluid" alt="Logo de ACA"></a>
 			</div>
 		</div>
 		<!-- // LOGOS PRE FOOTER-->
@@ -492,7 +490,9 @@
 				
 		<div class="row" id="footer">
 			<div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
-			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
+			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">
+				<a href="#" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
+			</div>
 		</div>
 
 		@livewireScripts

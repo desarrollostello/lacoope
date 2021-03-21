@@ -1,23 +1,27 @@
 
     <div>
         <div class="form-group">
-            <label for="nombre" class="form-label mb-2">Nombre</label>
-            <input wire:model.defer="nombre" id="nombre" placeholder="Ingrese su nombre" class="form-control" required/>
+            {!! Form::label('nombre', 'Nombre:')  !!}
+            {!! Form::text('nombre', null, ['class' =>'form-control', 'placeholder'=> 'Ingrese su nombre', 'required'=>'required']) !!}
         </div>
 
         <div class="form-group">
-            <label for="telefono" class="form-label mb-2">Teléfono</label>
-            <input wire:model.defer="telefono" id="telefono" placeholder="Ingrese su teléfono" class="form-control" required/>
+            {!! Form::label('telefono', 'Teléfono:')  !!}
+            {!! Form::text('telefono', null, ['class' =>'form-control', 'placeholder'=> 'Ingrese su Teléfono', 'required'=>'required']) !!}
         </div>
 
         <div class="form-group">
-            <label for="email" class="form-label mb-2">E-mail</label>
-            <input wire:model.defer="email" id="email" placeholder="Ingrese su E-mail" class="form-control" required/>
+            {!! Form::label('email', 'E-mail:')  !!}
+            {!! Form::email('email', null, ['class' =>'form-control', 'placeholder'=> 'Ingrese su E-mail', 'required'=>'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('file', 'Curriculum:')  !!}
+            {!! Form::text('file', null, ['class' =>'form-control', 'disabled']) !!}
         </div>
 
         <div class="form-group">
-            <label for="file" class="bmd-label-floating">Añade tu CV</label>
-            <input type="file" class="form-control-file" id="file" name="file" required>
+            {!! Form::label('file', 'Cargue su Curriculum')  !!}
+            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'pdf/*']) !!}
         </div>
         
     </div>                            

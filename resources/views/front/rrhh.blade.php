@@ -92,7 +92,7 @@
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item active">
-										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('paginarrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
@@ -137,7 +137,7 @@
                             <div class="row align-items-center mt-5">
                                 <div class="col-lg-12 col-md-12 col-xs-12">
                                     <div id="formulario-rrhh-1">
-										{!! Form::open(['route' => 'rrhh.store', 'autocomplete' => 'off', 'files' => true, 'enctype' => 'multipart/form-data']) !!}
+										{!! Form::open(['route' => 'rrhh.storeFront', 'autocomplete' => 'off', 'files' => true, 'enctype' => 'multipart/form-data']) !!}
 										
 											<input type="hidden" value="true" name="emailSent" id="emailSent">
                                             <div class="form-group">
@@ -199,7 +199,9 @@
 				
 		<div class="row" id="footer">
 			<div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
-			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
+			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">
+				<a href="#" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
+			</div>
 		</div>
 			
 	

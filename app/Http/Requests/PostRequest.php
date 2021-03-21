@@ -61,7 +61,7 @@ class PostRequest extends FormRequest
                     'extract'       => 'nullable',
                     'body'          => 'nullable',
                     'file'          => 'image',
-                    'slug'          => 'nullable|unique:lineas_creditos,slug,' . $post->id
+                    'slug'          => 'nullable|unique:posts,slug,' . $post->id
                 ];
             }
             default:

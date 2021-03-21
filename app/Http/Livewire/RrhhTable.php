@@ -55,10 +55,10 @@ class RrhhTable extends Component
             $this->order = null;
         }
         
-        $rrhhs = $rrhhs->paginate($this->perPage);
+        $curriculums = $rrhhs->paginate($this->perPage);
 
         return view('livewire.rrhh.index',[
-            'rrhhs' => $rrhhs,
+            'curriculums' => $curriculums,
         ]);
      //   return view('livewire.rrhh-table');
     }

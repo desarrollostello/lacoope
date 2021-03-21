@@ -95,6 +95,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {   
+       // dd($post);
        $this->authorize('author', $post);   
         $tags = Tag::all();
         $categories = Category::all();

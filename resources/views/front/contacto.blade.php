@@ -91,7 +91,7 @@
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('paginarrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item active">
 										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
@@ -145,22 +145,21 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                             <div id="formulario-contacto">
-                                <form class="needs-validation" novalidate>
+                                {!! Form::open(['route' => 'formFront', 'autocomplete' => 'off']) !!}
 									<div class="form-group">
 										<label for="nombre" class="bmd-label-floating">NOMBRE</label>
-										<input type="text" class="form-control" id="nombre" name="nombre">
+										<input type="text" class="form-control" id="nombre" name="nombre" required>
 									</div>
 									<div class="form-group">
 										<label for="email" class="bmd-label-floating">EMAIL</label>
-										<input type="email" class="form-control" id="email" name="email">
+										<input type="email" class="form-control" id="email" name="email" required>
 									</div>
 									<div class="form-group">
 									  <label for="mensaje" class="bmd-label-floating">MENSAJE</label>
-									  <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
+									  <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
 									</div>
-
-									<button type="submit" class="btn btn-primary btn-raised botones">ENVIAR</button>
-								  </form>
+									{!! Form::submit('Enviar', ['class' => 'btn btn-primary btn-raised botones']) !!}
+								{!! Form::close() !!}
                             </div>
                 </div>
                 
@@ -192,7 +191,9 @@
         
 <div class="row" id="footer">
     <div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
-    <div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
+    <div class="col-6 logo-footer  d-flex justify-content-center align-items-center">
+		<a href="#" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
+	</div>
 </div>
     
 

@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
+        \Carbon\Carbon::setLocale(config('app.locale'));
+        setlocale(LC_TIME, config('app.locale'));
         //Category::observe(CategoryObserver::class);
         //User::observe(UserObserver::class);
     }

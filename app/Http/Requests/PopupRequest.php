@@ -64,7 +64,7 @@ class PopupRequest extends FormRequest
                     'visualizations'=> 'nullable',
                     'url'           => 'nullable',
                     'file'          => 'image',
-                    'slug'          => 'nullable|unique:lineas_creditos,slug,' . $popup->id
+                    'slug'          => 'nullable|unique:popups,slug,' . $popup->id
                 ];
             }
             default:

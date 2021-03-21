@@ -9,12 +9,16 @@
                 <div class="bg-white p-5 overflow-hidden shadow-xl sn:rounded-lg">
     
                     <div class="grid grid-cols-12 gap-4">
+                        <a href="{{ route('rrhh.add') }}" class="btn btn-secondary btn-sm float-right">Nuevo Curriculum</a>
+                    </div>
+                        {{--
                         <div class="bg-gray-100 col-span-4">
                             <div class="bg-white rounded-lg shadow overflow-hidden max-w-4x1 mx-auto p-4 mb-6">
                                 @include("livewire.rrhh.$view")
                             </div>
                             
                         </div>
+                        --}}
                         <div class="bg-gray-300 col-span-8">
                             <!-- This example requires Tailwind CSS v2.0+ -->
                             <div class="flex flex-col">

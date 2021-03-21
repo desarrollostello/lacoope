@@ -30,9 +30,11 @@ use App\Http\Controllers\CkeditorController;
 */
 Route::get('/', [InicioController::class, 'index'])->name('home');
 Route::get('/novedades', [InicioController::class, 'novedades'])->name('novedades');
+Route::post('/formContactoFrontend', [InicioController::class, 'formContactoFrontend'])->name('formFront');
+
 Route::get('/paginarrhh', [FrontrrhhController::class, 'indexFront'])->name('paginarrhh');
-Route::middleware(['auth:sanctum', 'verified'])->get('/rrhh', RrhhTable::class)->name('rrhh');
-Route::post('rrhh-email', [FrontrrhhController::class, 'store'])->name('rrhh.store');
+Route::middleware(['auth:sanctum', 'verified'])->get('/curriculum', RrhhTable::class)->name('curriculum');
+//Route::post('rrhh-email', [FrontrrhhController::class, 'store'])->name('rrhh.store');
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -73,15 +75,28 @@ Route::middleware(['auth', 'verified'])->get('/roles', Permisos::class)->name('r
 //ckeditor upload
 Route::post('posts/image_upload', [PostController::class, 'upload'])->name('upload');
 
+
+//RRHH Curriculum
+Route::middleware(['auth:sanctum', 'verified'])->get('crearcurriculum', [FrontrrhhController::class, 'create'])->name('rrhh.add');
+Route::middleware(['auth:sanctum', 'verified'])->post('guardarcurriculum', [FrontrrhhController::class, 'store'])->name('rrhh.store');
+Route::middleware(['auth:sanctum', 'verified'])->post('subirrcurriculum', [FrontrrhhController::class, 'storeFront'])->name('rrhh.storeFront');
+Route::middleware(['auth:sanctum', 'verified'])->get('editarcurriculum/{curriculum}', [FrontrrhhController::class, 'edit'])->name('rrhh.edit');
+Route::middleware(['auth:sanctum', 'verified'])->get('/vercurriculum/{curriculum}', [FrontrrhhController::class, 'show'])->name('rrhh.ver');
+Route::middleware(['auth:sanctum', 'verified'])->patch('editarcurriculum/{curriculum}', [FrontrrhhController::class, 'update'])->name('rrhh.update');
+Route::middleware(['auth:sanctum', 'verified'])->get('destroy/{curriculum}', [FrontrrhhController::class, 'destroy'])->name('rrhh.destroy');
+
 // Posts
 Route::middleware(['auth:sanctum', 'verified'])->get('crearpost', [PostController::class, 'create'])->name('post.addpost');
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/verpost/{post}', [PostController::class, 'show'])->name('post.ver');
 Route::middleware(['auth:sanctum', 'verified'])->post('guardarpost', [PostController::class, 'store'])->name('post.store');
-Route::middleware(['auth:sanctum', 'verified'])->get('editar/{post}', [PostController::class, 'edit'])->name('post.edit');
-Route::middleware(['auth:sanctum', 'verified'])->patch('editar/{post}', [PostController::class, 'update'])->name('post.update');
+Route::middleware(['auth:sanctum', 'verified'])->get('editarpost/{post}', [PostController::class, 'edit'])->name('post.edit');
+Route::middleware(['auth:sanctum', 'verified'])->patch('editarpost/{post}', [PostController::class, 'update'])->name('post.update');
 Route::middleware(['auth:sanctum', 'verified'])->get('destroy/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
+
+// Curriculum Livewire
+Route::middleware(['auth:sanctum', 'verified'])->get('/curriculum', RrhhTable::class)->name('curriculum');
 
 // Post Livewire
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts2', PostTable::class)->name('posts2');

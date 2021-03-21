@@ -91,7 +91,7 @@
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('paginarrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
@@ -120,106 +120,152 @@
             </div>
 		</div>
 		
-		{{ setlocale(LC_ALL, 'es_ES') }}
 		{{ \Carbon\Carbon::setLocale('es') }}
+		
+		{{ setlocale(LC_ALL, 'es_ES') }}
+		
 
         
         <div class="container-fluid mb-5">
 			<div class="mycontainer container">
-				<div class="row d-flex align-items-center">
-					<!-- primer noticia-->
-					<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
-						<div class="row d-flex align-items-center width-sm">
-							<!--hora y titulo -->
-							<div class="col-lg-6 col-md-6 col-sm-12">
-								<div class="notice-date centrar-flex azul">
-									<div class="notice-day" azul>02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year" azul>2020</div>
+				
+					<div class="row d-flex align-items-center">
+						@foreach ($noticias as $n)
+						
+							@if ($loop->index == 0)
+
+								<!-- primer noticia-->
+								<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
+									<div class="row d-flex align-items-center width-sm">
+										<!--hora y titulo -->
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="notice-date centrar-flex azul">
+												<?php
+													$mes = $meses[(\Carbon\Carbon::parse($n->published)->format('n')) - 1];
+												?>
+												<div class="notice-day azul">{{ \Carbon\Carbon::parse($n->published)->format('d') }}</div>
+												<div class="notice-month azul">{{ $mes }}</div>
+												<div class="notice-year azul">{{ \Carbon\Carbon::parse($n->published)->format('Y') }}</div>
+											</div>
+											<br>
+											<br>
+											<div class="notice-title azul">{{ $n->name }}</div>
+										</div>
+										<!-- imagen-->
+										<div class="col-lg-6 col-md-6 col-sm-12 imagen-sm">
+											@if ($n->image)
+												<img src="{{ Storage::url($n->image->url) }}" class="img-fluid padding-top-sm" alt="">
+											@else
+												<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+											@endif
+											{{-- <img src="{{ asset('front/img/noticias/imagen1.png') }}" class="img-fluid padding-top-sm" alt="">--}}
+										</div>
+									</div>
 								</div>
-								<br>
-								<br>
-								<div class="notice-title azul">En Unicoop nos cuidamos entre todos</div>
-							</div>
-							<!-- imagen-->
-							<div class="col-lg-6 col-md-6 col-sm-12 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen1.png') }}" class="img-fluid padding-top-sm" alt="">
-							</div>
-						</div>
-					</div>
-					<!-- termina primer noticia-->
+								<!-- termina primer noticia-->
+							@endif
+							@if ($loop->index == 1)
+								<!-- segunda noticia-->
+								<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
+									<div class="row d-flex align-items-center width-sm">
+										<!--hora y titulo -->
+										<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-1 order-1">
+											<div class="notice-date centrar-flex azul">
+												<?php
+													$mes = $meses[(\Carbon\Carbon::parse($n->published)->format('n')) - 1];
+												?>
+												<div class="notice-day azul">{{ \Carbon\Carbon::parse($n->published)->format('d') }}</div>
+												<div class="notice-month azul">{{ $mes }}</div>
+												<div class="notice-year azul">{{ \Carbon\Carbon::parse($n->published)->format('Y') }}</div>
+											</div>
+											<br>
+											<br>
+											<div class="notice-title azul">{{ $n->name }}</div>
+										</div>
+										<!-- imagen-->
+										<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-2 order-2 imagen-sm">
+											@if ($n->image)
+												<img src="{{ Storage::url($n->image->url) }}" class="img-fluid padding-top-sm" alt="">
+											@else
+												<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+											@endif
+											{{--  <img src="{{ asset('front/img/noticias/imagen2.png') }}" class="img-fluid padding-top-sm" alt="">  --}}
+										</div>
+									</div>
 
-					<!-- segunda noticia-->
-					<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
-						<div class="row d-flex align-items-center width-sm">
-							<!--hora y titulo -->
-							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-1 order-1">
-								<div class="notice-date centrar-flex azul">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
 								</div>
-								<br>
-								<br>
-								<div class="notice-title azul">ACA Salud informa</div>
-							</div>
-							<!-- imagen-->
-							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-2 order-2 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen2.png') }}" class="img-fluid padding-top-sm" alt="">
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="row d-flex align-items-center">
-					<!-- tercer noticia-->
-					<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
-						<div class="row d-flex align-items-center width-sm">
-							<!-- imagen-->
-							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-2 order-lg-1 order-2  imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen3.png') }}" class="img-fluid padding-top-sm" alt="">
-							</div>
-							<!--hora y titulo -->
-							<div class="col-lg-6 col-md-6 col-sm-12  order-sm-1 order-md-1 order-lg-2 order-1">
-								<div class="notice-date centrar-flex">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
+									{{-- </div> --}}
+							@endif
+							{{-- <div class="row d-flex align-items-center">--}}
+							@if ($loop->index == 2)
+								<!-- tercer noticia-->
+								<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
+									<div class="row d-flex align-items-center width-sm">
+										<!-- imagen-->
+										<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-2 order-lg-1 order-2  imagen-sm">
+											@if ($n->image)
+												<img src="{{ Storage::url($n->image->url) }}" class="img-fluid padding-top-sm" alt="">
+											@else
+												<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+											@endif
+											{{-- <img src="{{ asset('front/img/noticias/imagen3.png') }}" class="img-fluid padding-top-sm" alt="">--}}
+										</div>
+										<!--hora y titulo -->
+										<div class="col-lg-6 col-md-6 col-sm-12  order-sm-1 order-md-1 order-lg-2 order-1">
+											<div class="notice-date centrar-flex">
+												<?php
+													$mes = $meses[(\Carbon\Carbon::parse($n->published)->format('n')) - 1];
+												?>
+												<div class="notice-day azul">{{ \Carbon\Carbon::parse($n->published)->format('d') }}</div>
+												<div class="notice-month azul">{{ $mes }}</div>
+												<div class="notice-year azul">{{ \Carbon\Carbon::parse($n->published)->format('Y') }}</div>
+											</div>
+											<br>
+											<br>
+											<div class="notice-title azul">{{ $n->name }}</div>
+										</div>
+										
+									</div>
 								</div>
-								<br>
-								<br>
-								<div class="notice-title azul">En Unicoop nos cuidamos entre todos</div>
-							</div>
-							
-						</div>
-					</div>
-					<!-- termina primer noticia-->
+								<!-- termina primer noticia-->
+							@endif
+							@if ($loop->index == 3)
+								<!-- cuarta noticia-->
+								<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
+									<div class="row d-flex align-items-center width-sm">
+										<!-- imagen-->
+										<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-1 order-2 imagen-sm">
+											@if ($n->image)
+												<img src="{{ Storage::url($n->image->url) }}" class="img-fluid padding-top-sm" alt="">
+											@else
+												<img src="{{ Storage::url('montania.jpg') }}" class="img-fluid padding-top-sm" alt="">
+											@endif
+											{{-- <img src="{{ asset('front/img/noticias/imagen4.png') }}" class="img-fluid padding-top-sm" alt="">--}}
+										</div>
+										<!--hora y titulo -->
+										<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-2 order-1">
+											<div class="notice-date centrar-flex azul">
+												<?php
+													$mes = $meses[(\Carbon\Carbon::parse($n->published)->format('n')) - 1];
+												?>
+												<div class="notice-day azul">{{ \Carbon\Carbon::parse($n->published)->format('d') }}</div>
+												<div class="notice-month azul">{{ $mes }}</div>
+												<div class="notice-year azul">{{ \Carbon\Carbon::parse($n->published)->format('Y') }}</div>
+											</div>
+											<br>
+											<br>
+											<div class="notice-title azul">{{ $n->name }}</div>
+										</div>
+										
+									</div>
 
-					<!-- cuarta noticia-->
-					<div class="col-12 col-lg-6 col-md-12 col-sm-12 d-flex align-items-center margin-bottom-sm">
-						<div class="row d-flex align-items-center width-sm">
-							<!-- imagen-->
-							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-2 order-md-1 order-lg-1 order-2 imagen-sm">
-								<img src="{{ asset('front/img/noticias/imagen4.png') }}" class="img-fluid padding-top-sm" alt="">
-							</div>
-							<!--hora y titulo -->
-							<div class="col-lg-6 col-md-6 col-sm-12 order-sm-1 order-md-2 order-lg-2 order-1">
-								<div class="notice-date centrar-flex azul">
-									<div class="notice-day azul">02</div>
-									<div class="notice-month azul">Abr</div>
-									<div class="notice-year azul">2020</div>
 								</div>
-								<br>
-								<br>
-								<div class="notice-title azul">ACA Salud informa</div>
-							</div>
-							
-						</div>
-
+							@endif
+						@endforeach
 					</div>
-				</div>
+					
 			</div>
+			{{ $noticias->links() }}
 		</div>
 
 		<!---- FIN DE NOTICIAS --->
@@ -249,7 +295,9 @@
 				
 		<div class="row" id="footer">
 			<div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
-			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
+			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">
+				<a href="#" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
+			</div>
 		</div>
 			
 	

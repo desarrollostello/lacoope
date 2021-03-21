@@ -91,7 +91,7 @@
 										<a class="nav-link" href="{{ route('novedades') }}">NOVEDADES</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('rrhh') }}">RECURSOS HUMANOS</a>
+										<a class="nav-link" href="{{ route('paginarrhh') }}">RECURSOS HUMANOS</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('contacto') }}">CONTACTO</a>
@@ -234,7 +234,9 @@
 				
 		<div class="row" id="footer">
 			<div class="col-6 texto-footer d-flex justify-content-center align-items-center">LA COOPERATIVA DE PATAGONES Y VIEDMA</div>
-			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">logo</div>
+			<div class="col-6 logo-footer  d-flex justify-content-center align-items-center">
+				<a href="#" target="_blank"><img src="{{ asset('front/img/unicoop.png') }}" class="img-fluid" alt="Logo de la Cooperativa"></a>
+			</div>
 		</div>
 			
 	

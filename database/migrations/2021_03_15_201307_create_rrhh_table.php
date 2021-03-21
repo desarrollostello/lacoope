@@ -17,9 +17,9 @@ class CreateRrhhTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('telefono');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->string('email')->unique();
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

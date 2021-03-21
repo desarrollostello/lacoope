@@ -22,11 +22,6 @@ class SendRrhh extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
-        /*
-        $this->nombre   = $data['nombre'];
-        $this->telefono = $data['telefono'];
-        $this->email    = $data['email'];
-        */
     }
 
     /**

@@ -1,4 +1,4 @@
-@if ($rrhhs->count())
+@if ($curriculums->count())
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
@@ -27,39 +27,43 @@
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-            @foreach ($rrhhs as $r)
+            @foreach ($curriculums as $curriculum)
                 <tr>
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $r->id }}
+                            {{ $curriculum->id }}
                         </div>
                     </td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $r->nombre }}
-                        </div>
-                    </td>
-
-                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                        <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $r->telefono }}
-                        </div>
-                    </td>
-                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                        <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $r->email }}
+                            {{ $curriculum->nombre }}
                         </div>
                     </td>
 
                     <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                         <div class="text-center text-sm font-medium text-gray-900">
-                            {{ $r->file }}
+                            {{ $curriculum->telefono }}
+                        </div>
+                    </td>
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+                        <div class="text-center text-sm font-medium text-gray-900">
+                            {{ $curriculum->email }}
+                        </div>
+                    </td>
+
+                    <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+                        <div class="text-center text-sm font-medium text-gray-900">
+                            {{ $curriculum->file }}
                         </div>
                     </td>
 
                     <td class="px-6 py-2 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="{{ route('rrhh.edit', $curriculum) }}"  class="btn btn-warning">Editar</a>
+                        <a href="{{ route('rrhh.destroy', $curriculum) }}"  class="btn btn-danger">Borrar</a>
+                        {{--
                         <button wire:click="edit({{ $r->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
                         <button wire:click="destroy({{ $r->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Borrar</button>
+                        --}}
                     </td>
                 </tr>
             @endforeach
@@ -67,7 +71,7 @@
         </tbody>
     </table>
     <div class="bg-white px-4 py-3 items-center justify-between border-t border-gray-200 sm:px-6">
-        {{ $rrhhs->links() }}
+        {{ $curriculums->links() }}
     </div>
 @else
     <div class="bg-white px-4 py-3 text-gray-500 items-center justify-between border-t border-gray-200 sm:px-6">

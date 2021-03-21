@@ -44,17 +44,17 @@ class FrontRrhhRequest extends FormRequest
                 ];
             }
             case 'PUT':
-                case 'PATCH': 
-                {
-                    return 
-                    [
-                        'nombre'      => 'required',
-                        'telefono'    => 'required',
-                        'email'       => 'required|email',
-                        'file'        => 'file',
-                        'slug'        => 'nullable|unique:rrhh,slug,' . $rrhh->id
-                    ];
-                }
+            case 'PATCH': 
+            {
+                return 
+                [
+                    'nombre'      => 'required',
+                    'telefono'    => 'required',
+                    'email'       => 'required|email',
+                    'file'        => 'nullable|file',
+                    //'slug'        => 'nullable|unique:rrhhs,slug,' . $rrhh->id
+                ];
+            }
             
             default:
                 break;
